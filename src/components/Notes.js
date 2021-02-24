@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import EditComponent from "./EditComponent";
 
 function Notes({
     pinned,
@@ -9,6 +10,9 @@ function Notes({
     labels,
     colours,
 }) {
+    const [modal, setModal] = useState(false);
+    const [editNote, setEditNote] = useState();
+
     if (filter !== "All") {
         others = others.filter((key) => key.label === filter);
         pinned = pinned.filter((key) => key.label === filter);
@@ -75,19 +79,39 @@ function Notes({
                             backgroundColor: `${note.colour}`,
                         }}
                         className="note"
+                        onClick={(e) => {
+                            if (
+                                e.target.localName !== "button" &&
+                                e.target.localName !== "option"
+                            ) {
+                                setModal(true);
+                                setEditNote(note);
+                            }
+                        }}
                     >
                         <div>{note.title}</div>
-                        <button onClick={() => togglePin(note)}>
+                        <button
+                            onClick={() => {
+                                togglePin(note);
+                                setModal(false);
+                            }}
+                        >
                             {note.pinned ? "Unpin" : "Pin"}
                         </button>
                         <p>{note.body}</p>
                         <div>
-                            <select onChange={(e) => changeLabel(e, note)}>
+                            <select
+                                onChange={(e) => changeLabel(e, note)}
+                                value={note.label}
+                            >
                                 {labels.map((label) => (
                                     <option>{label}</option>
                                 ))}
                             </select>
-                            <select onChange={(e) => changeColour(e, note)}>
+                            <select
+                                onChange={(e) => changeColour(e, note)}
+                                value={note.colour}
+                            >
                                 {Object.keys(colours).map((colour) => (
                                     <option>{colour}</option>
                                 ))}
@@ -104,6 +128,22 @@ function Notes({
 
     return (
         <div className="notes-container">
+            {modal ? (
+                <div className="edit-component-container">
+                    <EditComponent
+                        pinned={pinned}
+                        setPinned={setPinned}
+                        others={others}
+                        setOthers={setOthers}
+                        labels={labels}
+                        colours={colours}
+                        editNote={editNote}
+                        setModal={setModal}
+                    />
+                </div>
+            ) : (
+                ""
+            )}
             <h1>Pinned</h1>
             {displayNotes(pinned)}
             <h1>Others</h1>

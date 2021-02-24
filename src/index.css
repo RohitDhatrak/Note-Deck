@@ -1,3 +1,9 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .note-taker {
     width: 30%;
     margin: 0 auto;
@@ -35,4 +41,20 @@
 
 .label {
     font-size: 1.5rem;
+}
+
+.edit-component-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(63, 63, 66, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width: 50em;
 }
