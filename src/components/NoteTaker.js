@@ -1,17 +1,33 @@
 import React, { useState } from "react";
 import { v4 } from "uuid";
 
-function NoteTaker({ colours, labels, notes, setNotes }) {
+function NoteTaker({ colours, labels, others, setOthers, pinned, setPinned }) {
     const [inpFlag, setInpFlag] = useState(false);
     const [note, setNote] = useState({
         uuid: v4(),
         title: "",
         body: "",
-        date: new Date(),
         label: "",
         colour: "#fff",
         pinned: false,
     });
+
+    function addNote() {
+        if (note.pinned) {
+            setPinned([note, ...pinned]);
+        } else {
+            setOthers([note, ...others]);
+        }
+        setNote({
+            uuid: v4(),
+            title: "",
+            body: "",
+            label: "",
+            colour: "#fff",
+            pinned: false,
+        });
+        setInpFlag(false);
+    }
 
     return (
         <div className="note-taker">
@@ -30,7 +46,7 @@ function NoteTaker({ colours, labels, notes, setNotes }) {
                     style={{ display: "inline" }}
                     onClick={() => setNote({ ...note, pinned: !note.pinned })}
                 >
-                    pin
+                    {note.pinned ? "Unpin" : "Pin"}
                 </button>
             </div>
 
@@ -65,22 +81,7 @@ function NoteTaker({ colours, labels, notes, setNotes }) {
                         <option>{colour}</option>
                     ))}
                 </select>
-                <button
-                    className="close"
-                    onClick={() => {
-                        setNotes([...notes, note]);
-                        setNote({
-                            uuid: v4(),
-                            title: "",
-                            body: "",
-                            date: new Date(),
-                            label: "",
-                            colour: "#fff",
-                            pin: false,
-                        });
-                        setInpFlag(false);
-                    }}
-                >
+                <button className="close" onClick={addNote}>
                     Close
                 </button>
             </div>

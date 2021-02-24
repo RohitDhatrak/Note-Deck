@@ -2,32 +2,32 @@ import React, { useState } from "react";
 import "./index.css";
 import NoteTaker from "./components/NoteTaker";
 import Notes from "./components/Notes";
+import SidePannel from "./components/SidePannel";
 
 function App() {
     const [labels, setLabels] = useState(["All", "Important", "Todo"]);
-    const [label, setLabel] = useState("All");
-    const [notes, setNotes] = useState([
+    const [label, setLabel] = useState("");
+    const [filter, setFilter] = useState("All");
+    const [pinned, setPinned] = useState([
         {
             uuid: "7fb5f11e-b884-4854-a968-e7fd054c56e9",
             title: "Books on Finance",
             body:
                 "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
-            date:
-                "Date Wed Feb 24 2021 13: 19: 49 GMT + 0530(India Standard Time)",
-            label: "",
-            colour: "rgb(251, 188, 4, 0.5)",
-            pinned: false,
-        },
-        {
-            uuid: "7fb5f11e-b884-4854-a968-e7fd054c56e9",
-            title: "Books on Finance",
-            body:
-                "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
-            date:
-                "Date Wed Feb 24 2021 13: 19: 49 GMT + 0530(India Standard Time)",
             label: "",
             colour: "rgb(251, 188, 4, 0.5)",
             pinned: true,
+        },
+    ]);
+    const [others, setOthers] = useState([
+        {
+            uuid: "7fb5f11e-b884-4854-a968-e7fd054c56e9",
+            title: "Books on Finance",
+            body:
+                "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
+            label: "",
+            colour: "rgb(251, 188, 4, 0.5)",
+            pinned: false,
         },
     ]);
 
@@ -47,18 +47,22 @@ function App() {
 
     return (
         <div className="App">
-            <div className="side-bar">
-                {labels.map((label) => (
-                    <div className="label">{label}</div>
-                ))}
-            </div>
+            <SidePannel
+                labels={labels}
+                setLabels={setLabels}
+                label={label}
+                setLabel={setLabel}
+                setFilter={setFilter}
+            />
             <NoteTaker
                 colours={colours}
                 labels={labels}
-                notes={notes}
-                setNotes={setNotes}
+                others={others}
+                setOthers={setOthers}
+                pinned={pinned}
+                setPinned={setPinned}
             />
-            <Notes notes={notes} />
+            <Notes others={others} pinned={pinned} filter={filter} />
         </div>
     );
 }
