@@ -13,10 +13,12 @@ function NoteTaker({ colours, labels, others, setOthers, pinned, setPinned }) {
     });
 
     function addNote() {
-        if (note.pinned) {
-            setPinned([note, ...pinned]);
-        } else {
-            setOthers([note, ...others]);
+        if (note.title !== "" && note.body !== "") {
+            if (note.pinned) {
+                setPinned([note, ...pinned]);
+            } else {
+                setOthers([note, ...others]);
+            }
         }
         setNote({
             uuid: v4(),

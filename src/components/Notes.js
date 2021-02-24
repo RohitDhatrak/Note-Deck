@@ -1,12 +1,70 @@
 import React from "react";
 
-function Notes({ pinned, others, filter }) {
+function Notes({
+    pinned,
+    setPinned,
+    others,
+    setOthers,
+    filter,
+    labels,
+    colours,
+}) {
     if (filter !== "All") {
         others = others.filter((key) => key.label === filter);
         pinned = pinned.filter((key) => key.label === filter);
     }
 
-    function togglePin(note) {}
+    function togglePin(note) {
+        if (note.pinned) {
+            const newPinned = [...pinned];
+            const noteIdx = pinned.findIndex((key) => key.uuid === note.uuid);
+            const noteObj = pinned[noteIdx];
+            noteObj.pinned = !noteObj.pinned;
+            newPinned.splice(noteIdx, 1);
+            setOthers([noteObj, ...others]);
+            setPinned(newPinned);
+        } else {
+            const newOthers = [...others];
+            const noteIdx = others.findIndex((key) => key.uuid === note.uuid);
+            const noteObj = others[noteIdx];
+            noteObj.pinned = !noteObj.pinned;
+            newOthers.splice(noteIdx, 1);
+            setPinned([noteObj, ...pinned]);
+            setOthers(newOthers);
+        }
+    }
+
+    function changeColour(e, note) {
+        note.colour = e.target.value;
+        if (note.pinned) {
+            setPinned([...pinned]);
+        } else {
+            setOthers([...others]);
+        }
+    }
+
+    function changeLabel(e, note) {
+        note.label = e.target.value;
+        if (note.pinned) {
+            setPinned([...pinned]);
+        } else {
+            setOthers([...others]);
+        }
+    }
+
+    function deleteNote(note) {
+        if (note.pinned) {
+            const newPinned = [...pinned];
+            const noteIdx = pinned.findIndex((key) => key.uuid === note.uuid);
+            newPinned.splice(noteIdx, 1);
+            setPinned(newPinned);
+        } else {
+            const newOthers = [...others];
+            const noteIdx = others.findIndex((key) => key.uuid === note.uuid);
+            newOthers.splice(noteIdx, 1);
+            setOthers(newOthers);
+        }
+    }
 
     function displayNotes(arrList) {
         return (
@@ -23,6 +81,21 @@ function Notes({ pinned, others, filter }) {
                             {note.pinned ? "Unpin" : "Pin"}
                         </button>
                         <p>{note.body}</p>
+                        <div>
+                            <select onChange={(e) => changeLabel(e, note)}>
+                                {labels.map((label) => (
+                                    <option>{label}</option>
+                                ))}
+                            </select>
+                            <select onChange={(e) => changeColour(e, note)}>
+                                {Object.keys(colours).map((colour) => (
+                                    <option>{colour}</option>
+                                ))}
+                            </select>
+                            <button onClick={() => deleteNote(note)}>
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 ))}
             </div>

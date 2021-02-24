@@ -62,7 +62,15 @@ function App() {
                 pinned={pinned}
                 setPinned={setPinned}
             />
-            <Notes others={others} pinned={pinned} filter={filter} />
+            <Notes
+                others={others}
+                setOthers={setOthers}
+                pinned={pinned}
+                setPinned={setPinned}
+                filter={filter}
+                labels={labels}
+                colours={colours}
+            />
         </div>
     );
 }
