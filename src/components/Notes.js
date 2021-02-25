@@ -13,11 +13,6 @@ function Notes({
     const [modal, setModal] = useState(false);
     const [editNote, setEditNote] = useState();
 
-    if (filter !== "All") {
-        others = others.filter((key) => key.label === filter);
-        pinned = pinned.filter((key) => key.label === filter);
-    }
-
     function togglePin(note) {
         if (note.pinned) {
             const newPinned = [...pinned];
@@ -68,6 +63,10 @@ function Notes({
             newOthers.splice(noteIdx, 1);
             setOthers(newOthers);
         }
+    }
+
+    function getFilteredList(arrList) {
+        return arrList.filter((key) => key.label === filter);
     }
 
     function displayNotes(arrList) {
@@ -145,9 +144,13 @@ function Notes({
                 ""
             )}
             <h1>Pinned</h1>
-            {displayNotes(pinned)}
+            {filter === ""
+                ? displayNotes(pinned)
+                : displayNotes(getFilteredList(pinned))}
             <h1>Others</h1>
-            {displayNotes(others)}
+            {filter === ""
+                ? displayNotes(others)
+                : displayNotes(getFilteredList(others))}
         </div>
     );
 }

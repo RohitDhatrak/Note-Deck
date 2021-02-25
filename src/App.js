@@ -7,7 +7,7 @@ import SidePannel from "./components/SidePannel";
 function App() {
     const [labels, setLabels] = useState(["All", "Important", "Todo"]);
     const [label, setLabel] = useState("");
-    const [filter, setFilter] = useState("All");
+    const [filter, setFilter] = useState("");
     const [pinned, setPinned] = useState([
         {
             uuid: "7fb5f11e-b884-4854-a968-e7fd054c56e9",

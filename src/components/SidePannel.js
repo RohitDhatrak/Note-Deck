@@ -4,7 +4,13 @@ function SidePannel({ labels, setLabels, label, setLabel, setFilter }) {
     return (
         <div className="side-bar">
             {labels.map((label) => (
-                <div className="label" onClick={() => setFilter(label)}>
+                <div
+                    className="label"
+                    onClick={() => {
+                        console.log(label);
+                        label === "All" ? setFilter("") : setFilter(label);
+                    }}
+                >
                     {label}
                 </div>
             ))}
