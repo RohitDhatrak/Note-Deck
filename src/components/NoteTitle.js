@@ -1,6 +1,6 @@
 import React from "react";
 
-function NoteTitle({ note, setNote }) {
+function NoteTitle({ note, setNote, togglePin }) {
     return (
         <div>
             <input
@@ -15,7 +15,11 @@ function NoteTitle({ note, setNote }) {
             />
             <button
                 style={{ display: "inline" }}
-                onClick={() => setNote({ ...note, pinned: !note.pinned })}
+                onClick={() =>
+                    togglePin
+                        ? togglePin(note)
+                        : setNote({ ...note, pinned: !note.pinned })
+                }
             >
                 {note.pinned ? "Unpin" : "Pin"}
             </button>

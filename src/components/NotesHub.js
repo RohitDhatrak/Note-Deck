@@ -14,8 +14,6 @@ function NotesHub({
     const [modal, setModal] = useState(false);
     const [editNote, setEditNote] = useState();
 
-    console.log(editNote);
-
     function getFilteredList(arrList) {
         return arrList.filter((key) => key.label === filter);
     }
@@ -34,6 +32,7 @@ function NotesHub({
                         setPinned={setPinned}
                         others={others}
                         setOthers={setOthers}
+                        togglePin={togglePin}
                     />
                 ))}
             </div>
@@ -80,6 +79,44 @@ function NotesHub({
         }
     }
 
+    function togglePin(note, source, target) {
+        if (note.pinned) {
+            const newPinned = [...pinned];
+            const noteIdx = pinned.findIndex((key) => key.uuid === note.uuid);
+            const noteObj = pinned[noteIdx];
+            noteObj.pinned = !noteObj.pinned;
+            newPinned.splice(noteIdx, 1);
+            setOthers([noteObj, ...others]);
+            setPinned(newPinned);
+        } else {
+            const newOthers = [...others];
+            const noteIdx = others.findIndex((key) => key.uuid === note.uuid);
+            const noteObj = others[noteIdx];
+            noteObj.pinned = !noteObj.pinned;
+            newOthers.splice(noteIdx, 1);
+            setPinned([noteObj, ...pinned]);
+            setOthers(newOthers);
+        }
+        // console.log(note);
+        // const newList = [...source];
+        // const noteIdx = newList.findIndex((key) => key.uuid === note.uuid);
+        // // console.log(noteIdx);
+        // const noteObj = { ...newList[noteIdx] };
+        // noteObj.pinned = !note.pinned;
+        // newList.splice(noteIdx, 1);
+        // console.log(newList);
+        // if (note.pinned) {
+        //     setOthers([noteObj, ...target]);
+        //     setPinned([...newList]);
+        // } else {
+        //     setPinned([noteObj, ...target]);
+        //     setOthers([...newList]);
+        // }
+        // console.log(note);
+        // console.log("pinned" + pinned.length);
+        // console.log("others" + others.length);
+    }
+
     return (
         <div className="notes-container">
             {modal ? (
@@ -95,6 +132,7 @@ function NotesHub({
                         setModal={setModal}
                         addNote={addNote}
                         setEditNote={setEditNote}
+                        togglePin={togglePin}
                     />
                 </div>
             ) : (

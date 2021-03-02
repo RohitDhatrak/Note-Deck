@@ -14,10 +14,15 @@ function EditComponent({
     setEditNote,
     setModal,
     addNote,
+    togglePin,
 }) {
     return (
         <div className="modal">
-            <NoteTitle note={editNote} setNote={setEditNote} />
+            <NoteTitle
+                note={editNote}
+                setNote={setEditNote}
+                togglePin={togglePin}
+            />
 
             <NoteBody note={editNote} setNote={setEditNote} />
 
