@@ -1,34 +1,34 @@
 import React, { useState } from "react";
 import "./index.css";
-import NoteTaker from "./components/NoteTaker";
-import Notes from "./components/Notes";
+import AddNote from "./components/AddNote";
 import SidePannel from "./components/SidePannel";
+import NotesHub from "./components/NotesHub";
 
 function App() {
     const [labels, setLabels] = useState(["All", "Important", "Todo"]);
     const [label, setLabel] = useState("");
     const [filter, setFilter] = useState("");
     const [pinned, setPinned] = useState([
-        {
-            uuid: "7fb5f11e-b884-4854-a968-e7fd054c56e9",
-            title: "Books on Finance",
-            body:
-                "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
-            label: "",
-            colour: "rgb(251, 188, 4, 0.5)",
-            pinned: true,
-        },
+        // {
+        //     uuid: "7fb5f11e-b884-4854-a968-e7fd054c56e9",
+        //     title: "Books on Finance",
+        //     body:
+        //         "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
+        //     label: "",
+        //     colour: "rgb(251, 188, 4, 0.5)",
+        //     pinned: true,
+        // },
     ]);
     const [others, setOthers] = useState([
-        {
-            uuid: "7fb5f11e-b884-4854-a968-e7fd054c56e9",
-            title: "Books on Finance",
-            body:
-                "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
-            label: "",
-            colour: "rgb(251, 188, 4, 0.5)",
-            pinned: false,
-        },
+        // {
+        //     uuid: "7fb5f11e-b884-4854-a968-e7fd054c56e9",
+        //     title: "Books on Finance",
+        //     body:
+        //         "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
+        //     label: "",
+        //     colour: "rgb(204, 255, 144, 0.9)",
+        //     pinned: false,
+        // },
     ]);
 
     const colours = {
@@ -54,7 +54,7 @@ function App() {
                 setLabel={setLabel}
                 setFilter={setFilter}
             />
-            <NoteTaker
+            <AddNote
                 colours={colours}
                 labels={labels}
                 others={others}
@@ -62,7 +62,7 @@ function App() {
                 pinned={pinned}
                 setPinned={setPinned}
             />
-            <Notes
+            <NotesHub
                 others={others}
                 setOthers={setOthers}
                 pinned={pinned}
