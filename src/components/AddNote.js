@@ -4,40 +4,21 @@ import NoteTitle from "./NoteTitle";
 import NoteBody from "./NoteBody";
 import NoteFooter from "./NoteFooter";
 
-function NoteTaker({ colours, labels, others, setOthers, pinned, setPinned }) {
-    const [inpFlag, setInpFlag] = useState(false);
-    const [note, setNote] = useState({
-        uuid: v4(),
-        title: "",
-        body: "",
-        label: "",
-        colour: "#fff",
-        pinned: false,
-    });
-
-    function addNote() {
-        let title = note.title.trim();
-        let body = note.body.trim();
-        if (title.length || body.length) {
-            if (note.pinned) {
-                setPinned([note, ...pinned]);
-            } else {
-                setOthers([note, ...others]);
-            }
-        }
-        setNote({
-            uuid: v4(),
-            title: "",
-            body: "",
-            label: "",
-            colour: "#fff",
-            pinned: false,
-        });
-        setInpFlag(false);
-    }
-
+function AddNote({
+    colours,
+    labels,
+    others,
+    setOthers,
+    pinned,
+    setPinned,
+    note,
+    setNote,
+    inpFlag,
+    setInpFlag,
+    addNote,
+}) {
     return (
-        <div className="note-taker">
+        <div className="note-taker" onClick={(e) => e.stopPropagation()}>
             <div style={{ display: inpFlag ? "inline" : "none" }}>
                 <NoteTitle
                     className="note-taker-title"
@@ -71,4 +52,4 @@ function NoteTaker({ colours, labels, others, setOthers, pinned, setPinned }) {
     );
 }
 
-export default NoteTaker;
+export default AddNote;

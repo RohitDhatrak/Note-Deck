@@ -17,7 +17,7 @@ function EditComponent({
     togglePin,
 }) {
     return (
-        <div className="modal">
+        <div className="modal" onClick={(e) => e.stopPropagation()}>
             <NoteTitle
                 note={editNote}
                 setNote={setEditNote}
@@ -28,6 +28,7 @@ function EditComponent({
 
             <NoteFooter
                 note={editNote}
+                setNote={setEditNote}
                 labels={labels}
                 colours={colours}
                 pinned={pinned}

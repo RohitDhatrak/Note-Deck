@@ -93,10 +93,8 @@ function NotesHub({
     }
 
     function closeModal(e) {
-        if (e.target.localName === "div") {
-            addNote(editNote);
-            setModal(false);
-        }
+        addNote(editNote);
+        setModal(false);
     }
 
     function togglePin(note, source, target) {

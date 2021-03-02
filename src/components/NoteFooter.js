@@ -14,11 +14,15 @@ function NoteFooter({
     setNote,
 }) {
     function changeProperty(e, property) {
-        note[property] = e.target.value;
-        if (note.pinned) {
-            setPinned([...pinned]);
+        if (setModal !== undefined) {
+            setNote({ ...note, [property]: e.target.value });
         } else {
-            setOthers([...others]);
+            note[property] = e.target.value;
+            if (note.pinned) {
+                setPinned([...pinned]);
+            } else {
+                setOthers([...others]);
+            }
         }
     }
 
@@ -47,7 +51,7 @@ function NoteFooter({
     }
 
     return (
-        <div>
+        <div onClick={(e) => e.stopPropagation()}>
             <select
                 onChange={(e) => changeProperty(e, "label")}
                 value={note.label}

@@ -14,10 +14,8 @@ function NoteCard({
     togglePin,
 }) {
     function displayModal(e) {
-        if (e.target.localName === "div" || e.target.localName === "p") {
-            setModal(true);
-            setEditNote(note);
-        }
+        setModal(true);
+        setEditNote(note);
     }
 
     return (
@@ -30,8 +28,9 @@ function NoteCard({
         >
             <div>{note.title}</div>
             <button
-                onClick={() => {
+                onClick={(e) => {
                     togglePin(note);
+                    e.stopPropagation();
                     // note.pinned
                     //     ? togglePin([...pinned], [...others])
                     //     : togglePin([...others], [...pinned]);
