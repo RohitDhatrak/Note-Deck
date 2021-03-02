@@ -54,20 +54,40 @@ function NotesHub({
         );
     }
 
+    function moveNote(source, target, note) {
+        const noteIdx = source.findIndex((key) => key.uuid === note.uuid);
+        source.splice(noteIdx, 1);
+        if (note.pinned) {
+            setPinned([note, ...target]);
+            setOthers([...source]);
+        } else {
+            setOthers([note, ...target]);
+            setPinned([...source]);
+        }
+    }
+
     function addNote(note) {
         if (note.title !== "" || note.body !== "") {
             if (note.pinned) {
                 const noteIdx = pinned.findIndex(
                     (key) => key.uuid === note.uuid
                 );
-                pinned.splice(noteIdx, 1, note);
-                setPinned([...pinned]);
+                if (noteIdx === -1) {
+                    moveNote(others, pinned, note);
+                } else {
+                    pinned.splice(noteIdx, 1, note);
+                    setPinned([...pinned]);
+                }
             } else {
                 const noteIdx = others.findIndex(
                     (key) => key.uuid === note.uuid
                 );
-                others.splice(noteIdx, 1, note);
-                setOthers([...others]);
+                if (noteIdx === -1) {
+                    moveNote(pinned, others, note);
+                } else {
+                    others.splice(noteIdx, 1, note);
+                    setOthers([...others]);
+                }
             }
         }
     }
