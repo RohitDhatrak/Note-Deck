@@ -16,7 +16,7 @@ function App() {
             body:
                 "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
             label: "",
-            colour: "rgb(251, 188, 4, 0.5)",
+            colour: "rgb(172, 120, 25, 0.5)",
             pinned: true,
         },
     ]);
@@ -27,17 +27,31 @@ function App() {
             body:
                 "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
             label: "",
-            colour: "rgb(204, 255, 144, 0.9)",
+            colour: "rgb(88, 141, 28, 0.5)",
             pinned: false,
         },
     ]);
     const [inpFlag, setInpFlag] = useState(false);
+
+    const colours = {
+        Colour: "rgb(32, 33, 36)",
+        Red: "rgb(134, 47, 39, 0.5)",
+        Orange: "rgb(172, 120, 25, 0.5)",
+        Yellow: "rgb(190, 177, 29, 0.5)",
+        Green: "rgb(88, 141, 28, 0.5)",
+        Teal: "rgb(25, 117, 96, 0.5)",
+        Blue: "rgb(32, 127, 148, 0.5)",
+        Purple: "rgb(97, 33, 150, 0.5)",
+        Pink: "rgb(141, 39, 95, 0.5)",
+        Brown: "rgb(110, 55, 17, 0.5)",
+        Grey: "rgb(98, 99, 99, 0.5)",
+    };
     const [note, setNote] = useState({
         uuid: v4(),
         title: "",
         body: "",
         label: "",
-        colour: "#fff",
+        colour: colours.Colour,
         pinned: false,
     });
 
@@ -56,25 +70,11 @@ function App() {
             title: "",
             body: "",
             label: "",
-            colour: "#fff",
+            colour: colours.Colour,
             pinned: false,
         });
         setInpFlag(false);
     }
-
-    const colours = {
-        Colour: "rgb(255, 255, 255)",
-        Red: "rgb(242, 139, 130, 0.9)",
-        Orange: "rgb(251, 188, 4, 0.5)",
-        Yellow: "rgb(255, 244, 117, 0.9)",
-        Green: "rgb(204, 255, 144, 0.9)",
-        Teal: "rgb(167, 255, 235, 0.9)",
-        Blue: "rgb(203, 240, 248, 0.9)",
-        Purple: "rgb(215, 174, 251, 0.9)",
-        Pink: "rgb(253, 207, 232, 0.9)",
-        Brown: "rgb(230, 201, 168, 0.9)",
-        Grey: "rgb(232, 234, 237, 0.9)",
-    };
 
     return (
         <div className="App" onClick={addNote}>
@@ -85,28 +85,30 @@ function App() {
                 setLabel={setLabel}
                 setFilter={setFilter}
             />
-            <AddNote
-                colours={colours}
-                labels={labels}
-                others={others}
-                setOthers={setOthers}
-                pinned={pinned}
-                setPinned={setPinned}
-                note={note}
-                setNote={setNote}
-                inpFlag={inpFlag}
-                setInpFlag={setInpFlag}
-                addNote={addNote}
-            />
-            <NotesHub
-                others={others}
-                setOthers={setOthers}
-                pinned={pinned}
-                setPinned={setPinned}
-                filter={filter}
-                labels={labels}
-                colours={colours}
-            />
+            <div className="main-container">
+                <AddNote
+                    colours={colours}
+                    labels={labels}
+                    others={others}
+                    setOthers={setOthers}
+                    pinned={pinned}
+                    setPinned={setPinned}
+                    note={note}
+                    setNote={setNote}
+                    inpFlag={inpFlag}
+                    setInpFlag={setInpFlag}
+                    addNote={addNote}
+                />
+                <NotesHub
+                    others={others}
+                    setOthers={setOthers}
+                    pinned={pinned}
+                    setPinned={setPinned}
+                    filter={filter}
+                    labels={labels}
+                    colours={colours}
+                />
+            </div>
         </div>
     );
 }
