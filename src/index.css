@@ -1,34 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 * {
     padding: 0;
     margin: 0;
+    border: none;
     box-sizing: border-box;
+    color: var(--secondary-colour);
+    background-color: var(--primary-colour);
+    outline: none;
+    font-size: 1rem;
+    font-family: "Roboto", Arial, sans-serif;
+}
+
+:root {
+    --primary-colour: #202124;
+    --secondary-colour: #e8eaed;
+}
+
+.main-container {
+    margin-left: 300px;
 }
 
 .note-taker {
-    width: 30%;
+    width: 36.4em;
     margin: 0 auto;
+    border: rgb(232, 234, 237, 0.3) solid 1px;
+    margin-top: 2em;
+    border-radius: 0.5em;
+    padding: 0.1em;
 }
 .note-taker-title {
-    width: 86%;
-}
-
-.note-taker-body,
-.note-taker-footer {
     width: 100%;
+    border: none;
+    padding: 0.3em 0.8em;
+    padding-top: 0.8em;
+    margin-bottom: 0.5em;
 }
 
-.note-taker-footer > .close {
-    float: right;
+.note-taker-title > textarea {
+    height: 1em;
+    font-weight: 400;
+    width: 97%;
+    display: inline;
+    resize: none;
+    overflow: auto;
+}
+
+.note-taker-title > button {
+    position: fixed;
+}
+
+.note-taker-body {
+    width: 100%;
+    height: 2.7em;
+    padding: 0.5em 12.8px;
+    padding-top: 0.8em;
+    resize: none;
+    font-weight: 400;
+    overflow: auto;
+    max-height: 38em;
+    font-size: 0.9rem;
+}
+
+.note-taker-footer {
+    width: 90%;
+    display: inline-block;
+    padding: 0.5em 0.8em;
+    padding-top: 1em;
+}
+
+.note-taker-footer > select,
+.note-taker-footer > button {
+    background-color: transparent;
 }
 
 .notes-container {
-    margin-left: 300px;
 }
 
 .note {
     width: 13em;
     border-radius: 1em;
     padding: 1em;
+}
+
+.note > div,
+.note > button,
+.note > p {
+    background-color: transparent;
 }
 
 .side-bar {

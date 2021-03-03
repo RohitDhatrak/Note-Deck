@@ -14,15 +14,10 @@ function EditComponent({
     setEditNote,
     setModal,
     addNote,
-    togglePin,
 }) {
     return (
-        <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <NoteTitle
-                note={editNote}
-                setNote={setEditNote}
-                togglePin={togglePin}
-            />
+        <div className="note-taker" onClick={(e) => e.stopPropagation()}>
+            <NoteTitle note={editNote} setNote={setEditNote} />
 
             <NoteBody note={editNote} setNote={setEditNote} />
 
