@@ -12,26 +12,29 @@ function EditComponent({
     colours,
     editNote,
     setEditNote,
+    modal,
     setModal,
     addNote,
 }) {
     return (
         <div className="note-taker" onClick={(e) => e.stopPropagation()}>
-            <NoteTitle note={editNote} setNote={setEditNote} />
+            <NoteTitle note={editNote} setNote={setEditNote} modal={modal} />
 
-            <NoteBody note={editNote} setNote={setEditNote} />
+            <NoteBody note={editNote} setNote={setEditNote} modal={modal} />
 
-            <NoteFooter
-                note={editNote}
-                setNote={setEditNote}
-                labels={labels}
-                colours={colours}
-                pinned={pinned}
-                setPinned={setPinned}
-                others={others}
-                setOthers={setOthers}
-                setModal={setModal}
-            />
+            <div className="footer">
+                <NoteFooter
+                    note={editNote}
+                    setNote={setEditNote}
+                    labels={labels}
+                    colours={colours}
+                    pinned={pinned}
+                    setPinned={setPinned}
+                    others={others}
+                    setOthers={setOthers}
+                    setModal={setModal}
+                />
+            </div>
             <button
                 className="close"
                 onClick={() => {

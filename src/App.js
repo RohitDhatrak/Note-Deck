@@ -6,7 +6,7 @@ import SidePannel from "./components/SidePannel";
 import NotesHub from "./components/NotesHub";
 
 function App() {
-    const [labels, setLabels] = useState(["All", "Important", "Todo"]);
+    const [labels, setLabels] = useState(["None", "Important", "Todo"]);
     const [label, setLabel] = useState("");
     const [filter, setFilter] = useState("");
     const [pinned, setPinned] = useState([
@@ -32,6 +32,7 @@ function App() {
         },
     ]);
     const [inpFlag, setInpFlag] = useState(false);
+    const [editLabel, setEditLabel] = useState(false);
 
     const colours = {
         Colour: "rgb(32, 33, 36)",
@@ -84,6 +85,7 @@ function App() {
                 label={label}
                 setLabel={setLabel}
                 setFilter={setFilter}
+                setEditLabel={setEditLabel}
             />
             <div className="main-container">
                 <AddNote
@@ -106,7 +108,12 @@ function App() {
                     setPinned={setPinned}
                     filter={filter}
                     labels={labels}
+                    setLabels={setLabels}
+                    label={label}
+                    setLabel={setLabel}
                     colours={colours}
+                    editLabel={editLabel}
+                    setEditLabel={setEditLabel}
                 />
             </div>
         </div>

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { v4 } from "uuid";
+import React from "react";
 import NoteTitle from "./NoteTitle";
 import NoteBody from "./NoteBody";
 import NoteFooter from "./NoteFooter";
@@ -20,18 +19,14 @@ function AddNote({
     return (
         <div className="note-taker" onClick={(e) => e.stopPropagation()}>
             <div style={{ display: inpFlag ? "inline" : "none" }}>
-                <NoteTitle
-                    className="note-taker-title"
-                    note={note}
-                    setNote={setNote}
-                />
+                <NoteTitle note={note} setNote={setNote} />
             </div>
 
             <NoteBody note={note} setNote={setNote} setInpFlag={setInpFlag} />
 
             <div
+                className="footer"
                 style={{ display: inpFlag ? "inline" : "none" }}
-                className="note-taker-footer"
             >
                 <NoteFooter
                     note={note}
