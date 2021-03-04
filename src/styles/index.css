@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import url("./AddNote.css");
+@import url("./NoteBody.css");
+@import url("./NoteFooter.css");
+@import url("./NoteTitle.css");
+@import url("./NoteCard.css");
+@import url("./EditComponent.css");
+@import url("./ColourPicker.css");
+
+:root  {
+    --primary-colour: #202124;
+    --secondary-colour: #e8eaed;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+    color: var(--secondary-colour);
+    background-color: var(--primary-colour);
+    outline: none;
+    font-size: 1rem;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 400;
+}
+
+.main-container {
+    margin-left: 300px;
+}
+
+.notes-container {
+    padding-left: 100px;
+    margin-bottom: 1em;
+}
+
+.notes-pinned,
+.notes-others {
+    font-size: 0.6875rem;
+    color: #9aa0a6;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-left: 1.5em;
+    margin-bottom: 0.8em;
+    margin-top: 5em;
+}
+
+.side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+}
+
+.label {
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+}

@@ -1,0 +1,11 @@
+.note-taker-body {
+    width: 100%;
+    height: 2.7em;
+    padding: 0.5em 12.8px;
+    padding-top: 0.9em;
+    resize: none;
+    font-weight: 400;
+    min-height: max-content;
+    max-height: 38em;
+    font-size: 0.9rem;
+}

@@ -1,0 +1,56 @@
+.card {
+    font-size: 0.875rem;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    width: 18em;
+    border-radius: 0.5em;
+    padding: 1em;
+    padding-bottom: 0;
+    border: rgb(232, 234, 237, 0.3) solid 1px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    position: relative;
+    transition-property: background, border, opacity, box-shadow, transform;
+    transition-timing-function: ease-in;
+    transition-duration: 0.218s;
+}
+
+.card-title,
+.card-pin-button,
+.card-body,
+.card-footer {
+    background-color: transparent;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 0.6em;
+    width: 86%;
+}
+
+.card-pin-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    float: right;
+    cursor: pointer;
+    opacity: 0.54;
+}
+
+.card-pin-button:hover {
+    opacity: 0.87;
+}
+
+.card-body {
+    max-height: 24.75em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 19;
+    -webkit-box-orient: vertical;
+}
+
+.card-footer {
+    /* position: relative; */
+}
