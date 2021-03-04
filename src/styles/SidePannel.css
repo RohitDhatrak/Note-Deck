@@ -1,0 +1,37 @@
+.side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+}
+
+.label {
+    font-size: 0.9rem;
+    height: 3.5em;
+    padding: 1em;
+    border-radius: 0 2em 2em 0;
+    cursor: pointer;
+}
+
+.label:hover {
+    background-color: #2a2b2c;
+}
+
+.home-label {
+    background-color: #41331c;
+    margin-top: 0.5em;
+}
+
+.tag-icons {
+    transform: scale(2);
+    margin-right: 2em;
+    margin-left: 1em;
+    padding-top: 0.2em;
+    background-color: transparent;
+}
+
+.home-icon,
+.edit-icon {
+    transform: scale(1.9);
+}
