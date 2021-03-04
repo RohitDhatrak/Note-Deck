@@ -1,5 +1,7 @@
 import React from "react";
 import { v4 } from "uuid";
+import ColourPicker from "./ColourPicker";
+import LabelSelector from "./LabelSelector";
 
 function NoteFooter({
     note,
@@ -13,11 +15,11 @@ function NoteFooter({
     setInpFlag,
     setNote,
 }) {
-    function changeProperty(e, property) {
+    function changeProperty(value, property) {
         if (setModal !== undefined) {
-            setNote({ ...note, [property]: e.target.value });
+            setNote({ ...note, [property]: value });
         } else {
-            note[property] = e.target.value;
+            note[property] = value;
             if (note.pinned) {
                 setPinned([...pinned]);
             } else {
@@ -51,29 +53,33 @@ function NoteFooter({
     }
 
     return (
-        <div onClick={(e) => e.stopPropagation()}>
-            <select
-                onChange={(e) => changeProperty(e, "label")}
-                value={note.label}
-            >
-                {labels.map((label) => (
-                    <option>{label}</option>
-                ))}
-            </select>
-            <select
-                onChange={(e) => changeProperty(e, "colour")}
-                value={note.colour}
-            >
-                {Object.keys(colours).map((colour) => (
-                    <option value={colours[colour]}>{colour}</option>
-                ))}
-            </select>
+        <div onClick={(e) => e.stopPropagation()} className="note-taker-footer">
+            <LabelSelector
+                note={note}
+                labels={labels}
+                changeProperty={changeProperty}
+            />
+            <ColourPicker
+                note={note}
+                colours={colours}
+                changeProperty={changeProperty}
+            />
             <button
                 onClick={() =>
                     note.pinned ? deleteNote(pinned) : deleteNote(others)
                 }
             >
-                Delete
+                <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    className="bin"
+                >
+                    <path
+                        d="M9 3v1H4v2h1v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1V4h-5V3H9M7 6h10v13H7V6m2 2v9h2V8H9m4 0v9h2V8h-2z"
+                        fill="rgb(136, 21, 21)"
+                    ></path>
+                </svg>
             </button>
         </div>
     );
