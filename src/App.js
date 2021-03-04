@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { v4 } from "uuid";
-import "./index.css";
+import "./styles/index.css";
 import AddNote from "./components/AddNote";
 import SidePannel from "./components/SidePannel";
 import NotesHub from "./components/NotesHub";
