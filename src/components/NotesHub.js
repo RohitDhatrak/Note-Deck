@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EditComponent from "./EditComponent";
 import NoteCard from "./NoteCard";
+import EditLabel from "./EditLabel";
 
 function NotesHub({
     pinned,
@@ -9,7 +10,12 @@ function NotesHub({
     setOthers,
     filter,
     labels,
+    setLabels,
+    label,
+    setLabel,
     colours,
+    editLabel,
+    setEditLabel,
 }) {
     const [modal, setModal] = useState(false);
     const [editNote, setEditNote] = useState();
@@ -42,11 +48,15 @@ function NotesHub({
     function NotesCategories() {
         return (
             <div>
-                {pinned.length ? <h1>Pinned</h1> : ""}
+                {pinned.length ? <h1 className="notes-pinned">Pinned</h1> : ""}
                 {filter === ""
                     ? displayNotes(pinned)
                     : displayNotes(getFilteredList(pinned))}
-                {others.length && pinned.length ? <h1>Others</h1> : ""}
+                {others.length && pinned.length ? (
+                    <h1 className="notes-others">Others</h1>
+                ) : (
+                    ""
+                )}
                 {filter === ""
                     ? displayNotes(others)
                     : displayNotes(getFilteredList(others))}
@@ -135,6 +145,14 @@ function NotesHub({
         // console.log("others" + others.length);
     }
 
+    function addNewLabel() {
+        if (label !== "") {
+            setLabels([...labels, label]);
+            setLabel("");
+        }
+        setEditLabel(false);
+    }
+
     return (
         <div className="notes-container">
             {modal ? (
@@ -147,10 +165,24 @@ function NotesHub({
                         labels={labels}
                         colours={colours}
                         editNote={editNote}
+                        modal={modal}
                         setModal={setModal}
                         addNote={addNote}
                         setEditNote={setEditNote}
-                        togglePin={togglePin}
+                    />
+                </div>
+            ) : (
+                ""
+            )}
+            {editLabel ? (
+                <div
+                    className="edit-label-component-container"
+                    onClick={addNewLabel}
+                >
+                    <EditLabel
+                        label={label}
+                        setLabel={setLabel}
+                        addNewLabel={addNewLabel}
                     />
                 </div>
             ) : (
