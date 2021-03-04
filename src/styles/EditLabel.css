@@ -1,0 +1,39 @@
+.edit-label-component-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(32, 33, 36, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    transition: opacity 0.218s ease-in;
+}
+
+.edit-label-card {
+    margin: 0 auto;
+    border: rgb(95, 99, 104, 0.8) solid 1px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-radius: 0.5em;
+    padding: 1em;
+    transition-property: background, border, opacity, box-shadow, transform;
+    transition-timing-function: ease-in;
+}
+
+.edit-label-title {
+    margin-bottom: 1em;
+}
+
+.edit-label-input {
+    font-size: 0.9rem;
+    margin-bottom: 0.5em;
+}
+
+.edit-label-done-icon {
+    transform: scale(1.3);
+    cursor: pointer;
+}
