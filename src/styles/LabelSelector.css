@@ -1,0 +1,55 @@
+.label-container {
+    display: inline;
+    position: relative;
+    background-color: transparent;
+    margin-right: 1em;
+}
+
+.label-options {
+    display: none;
+    flex-wrap: wrap;
+    width: 8em;
+    background-color: var(--primary-colour);
+    position: absolute;
+    bottom: 22px;
+    border-radius: 0.5em;
+    padding: 0.2em;
+}
+
+.label-select {
+    width: 100%;
+    margin: 0.25em 0.125em;
+    padding: 0.1em 0.5em;
+    cursor: pointer;
+    color: rgb(232, 234, 237, 0.5);
+}
+
+.label-select:hover {
+    color: rgb(232, 234, 237, 1);
+}
+
+.label-link {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.label-selector {
+    background-color: transparent;
+    cursor: pointer;
+    display: inline;
+    background-color: rgb(232, 234, 237, 0.5);
+    padding: 0.1em 0.4em;
+    border-radius: 0.5em;
+}
+
+.label-container:hover .label-options {
+    display: flex;
+}
+
+/* .colour-link:target + .colour-options {
+    display: flex;
+} */
+
+.label-link:visited + .label-options {
+    display: flex;
+}
