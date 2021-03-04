@@ -44,10 +44,11 @@
 }
 
 .card-body {
+    font-size: 0.95rem;
     max-height: 24.75em;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 19;
+    -webkit-line-clamp: 18;
     -webkit-box-orient: vertical;
 }
 

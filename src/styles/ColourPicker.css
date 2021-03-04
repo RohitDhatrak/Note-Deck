@@ -11,6 +11,7 @@
     background-color: var(--primary-colour);
     position: absolute;
     bottom: 22px;
+    left: 0px;
     border-radius: 0.5em;
     padding: 0.2em;
 }
@@ -52,4 +53,10 @@
 
 .colour-link:visited + .colour-options {
     display: flex;
+}
+
+.colour-check {
+    background-color: transparent;
+    transform: scale(1.2);
+    margin: 0 auto;
 }

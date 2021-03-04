@@ -6,8 +6,11 @@
 @import url("./NoteCard.css");
 @import url("./EditComponent.css");
 @import url("./ColourPicker.css");
+@import url("./LabelSelector.css");
+@import url("./EditLabel.css");
+@import url("./SidePannel.css");
 
-:root  {
+:root {
     --primary-colour: #202124;
     --secondary-colour: #e8eaed;
 }
@@ -30,7 +33,7 @@
 }
 
 .notes-container {
-    padding-left: 100px;
+    padding-left: 30px;
     margin-bottom: 1em;
 }
 
@@ -43,18 +46,4 @@
     margin-left: 1.5em;
     margin-bottom: 0.8em;
     margin-top: 5em;
-}
-
-.side-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100vh;
-}
-
-.label {
-    font-size: 1rem;
-    cursor: pointer;
-    margin-bottom: 0.5em;
 }

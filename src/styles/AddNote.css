@@ -4,6 +4,7 @@
     border: rgb(95, 99, 104, 0.8) solid 1px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     margin-top: 2em;
+    margin-bottom: 2em;
     border-radius: 0.5em;
     padding: 0.1em;
     transition-property: background, border, opacity, box-shadow, transform;
@@ -11,7 +12,8 @@
 }
 
 .footer {
-    padding-left: 1em;
+    padding-left: 0.8em;
+    display: inline;
 }
 
 .close {
