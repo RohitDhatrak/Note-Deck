@@ -2,6 +2,7 @@
     display: inline;
     position: relative;
     background-color: transparent;
+    padding: 0.5em;
 }
 
 .colour-options {
@@ -10,8 +11,8 @@
     width: 8em;
     background-color: var(--primary-colour);
     position: absolute;
-    bottom: 22px;
-    left: 0px;
+    bottom: 30px;
+    left: -10px;
     border-radius: 0.5em;
     padding: 0.2em;
 }
