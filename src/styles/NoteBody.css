@@ -4,6 +4,7 @@
     padding: 0.5em 12.8px;
     padding-top: 0.8em;
     resize: none;
+    overflow: hidden;
     font-weight: 400;
     max-height: 38em;
     font-size: 0.9rem;
