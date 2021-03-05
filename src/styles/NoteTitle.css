@@ -13,7 +13,7 @@
     width: 97%;
     display: inline;
     resize: none;
-    overflow: auto;
+    overflow: hidden;
     background-color: transparent;
 }
 
