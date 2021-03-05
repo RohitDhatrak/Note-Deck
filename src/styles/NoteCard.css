@@ -13,6 +13,8 @@
     transition-property: background, border, opacity, box-shadow, transform;
     transition-timing-function: ease-in;
     transition-duration: 0.218s;
+    margin-bottom: 1em;
+    margin-right: 1em;
 }
 
 .card-title,
@@ -28,9 +30,11 @@
     display: inline-block;
     margin-bottom: 0.6em;
     width: 86%;
+    min-height: 1em;
 }
 
 .card-pin-button {
+    visibility: hidden;
     position: absolute;
     right: 15px;
     top: 15px;
@@ -45,13 +49,21 @@
 
 .card-body {
     font-size: 0.95rem;
-    max-height: 24.75em;
+    height: 9.4em;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 18;
+    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
 }
 
 .card-footer {
-    /* position: relative; */
+    visibility: hidden;
+}
+
+.card:hover .card-pin-button {
+    visibility: visible;
+}
+
+.card:hover .card-footer {
+    visibility: visible;
 }
