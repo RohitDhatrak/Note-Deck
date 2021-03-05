@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
-function SidePannel({
-    labels,
-    setLabels,
-    label,
-    setLabel,
-    setFilter,
-    setEditLabel,
-}) {
+function SidePannel({ labels, filter, setFilter, setEditLabel }) {
+    const [selected, setSelected] = useState("Notes");
     function LableList() {
         return labels.map((label) =>
             label === "None" ? (
                 ""
             ) : (
-                <div className="label" onClick={() => setFilter(label)}>
+                <div
+                    className={`label ${
+                        label === filter ? "label-active" : ""
+                    }`}
+                    onClick={(e) => {
+                        setFilter(label);
+                        setSelected(e.target.innerText);
+                    }}
+                >
                     <svg
                         width="1em"
                         height="1em"
@@ -33,7 +35,15 @@ function SidePannel({
 
     return (
         <div className="side-bar">
-            <div onClick={() => setFilter("")} className="label home-label">
+            <div
+                onClick={(e) => {
+                    setFilter("");
+                    setSelected(e.target.innerText);
+                }}
+                className={`label home-label ${
+                    selected === "Notes" ? "label-active" : ""
+                }`}
+            >
                 <svg
                     width="1em"
                     height="1em"

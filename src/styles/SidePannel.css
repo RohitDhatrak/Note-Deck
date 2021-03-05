@@ -18,8 +18,11 @@
     background-color: #2a2b2c;
 }
 
+.label-active {
+    background-color: #41331c !important;
+}
+
 .home-label {
-    background-color: #41331c;
     margin-top: 0.5em;
 }
 
