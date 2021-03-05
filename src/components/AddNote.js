@@ -17,7 +17,11 @@ function AddNote({
     addNote,
 }) {
     return (
-        <div className="note-taker" onClick={(e) => e.stopPropagation()}>
+        <div
+            className="note-taker"
+            onClick={(e) => e.stopPropagation()}
+            style={{ backgroundColor: `${note.colour}` }}
+        >
             <div style={{ display: inpFlag ? "inline" : "none" }}>
                 <NoteTitle note={note} setNote={setNote} />
             </div>

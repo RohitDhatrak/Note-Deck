@@ -14,9 +14,11 @@
 .footer {
     padding-left: 0.8em;
     display: inline;
+    background-color: transparent;
 }
 
 .close {
     cursor: pointer;
     font-size: 0.9rem;
+    background-color: transparent;
 }

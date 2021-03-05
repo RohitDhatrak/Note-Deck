@@ -17,7 +17,11 @@ function EditComponent({
     addNote,
 }) {
     return (
-        <div className="note-taker" onClick={(e) => e.stopPropagation()}>
+        <div
+            className="note-taker"
+            onClick={(e) => e.stopPropagation()}
+            style={{ backgroundColor: `${editNote.colour}` }}
+        >
             <NoteTitle note={editNote} setNote={setEditNote} modal={modal} />
 
             <NoteBody note={editNote} setNote={setEditNote} modal={modal} />
