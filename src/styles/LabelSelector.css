@@ -2,7 +2,8 @@
     display: inline;
     position: relative;
     background-color: transparent;
-    margin-right: 1em;
+    padding: 0.5em 0;
+    margin-right: 0.8em;
 }
 
 .label-options {
@@ -11,7 +12,7 @@
     width: 8em;
     background-color: var(--primary-colour);
     position: absolute;
-    bottom: 22px;
+    bottom: 30px;
     border-radius: 0.5em;
     padding: 0.2em;
 }
@@ -37,7 +38,7 @@
     background-color: transparent;
     cursor: pointer;
     display: inline;
-    background-color: rgb(232, 234, 237, 0.5);
+    background-color: rgba(145, 146, 148, 0.5);
     padding: 0.1em 0.4em;
     border-radius: 0.5em;
 }

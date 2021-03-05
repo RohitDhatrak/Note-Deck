@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import url("./NotesDisplay.css");
 @import url("./AddNote.css");
 @import url("./NoteBody.css");
 @import url("./NoteFooter.css");
@@ -29,21 +30,5 @@
 }
 
 .main-container {
-    margin-left: 300px;
-}
-
-.notes-container {
-    padding-left: 30px;
-    margin-bottom: 1em;
-}
-
-.notes-pinned,
-.notes-others {
-    font-size: 0.6875rem;
-    color: #9aa0a6;
-    font-weight: 500;
-    text-transform: uppercase;
-    margin-left: 1.5em;
-    margin-bottom: 0.8em;
-    margin-top: 5em;
+    margin-left: 23.125em;
 }

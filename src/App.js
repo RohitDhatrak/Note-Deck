@@ -3,7 +3,7 @@ import { v4 } from "uuid";
 import "./styles/index.css";
 import AddNote from "./components/AddNote";
 import SidePannel from "./components/SidePannel";
-import NotesHub from "./components/NotesHub";
+import NotesDisplay from "./components/NotesDisplay";
 
 function App() {
     const [labels, setLabels] = useState(["None", "Important", "Todo"]);
@@ -15,18 +15,18 @@ function App() {
             title: "Books on Finance",
             body:
                 "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
-            label: "",
+            label: "Todo",
             colour: "rgb(172, 120, 25, 0.5)",
             pinned: true,
         },
     ]);
     const [others, setOthers] = useState([
         {
-            uuid: "7fb5f11e-b884-4854-a968-e88d054c56e9",
+            uuid: "e88d054c56e9-7fb5f11e-b884-4854-a968-",
             title: "Books on Finance",
             body:
                 "Financial Affairs Of The Common Man: Master the Art of Personal Finance Management - Anil Lamba\n\nRomancing the Balance Sheet (2nd Edition) - Anil Lamba\n\nThe Two-Minute Revolution: The Art of Growing Business - Sangeeta Talwar\n\nLean Analytics: Use Data to Build a Better Startup Faster - Alistair Croll and Benjamin Yoskovitz\n\nTraction: Get A Grip On Your Business - Gino Wickman\n\nHow to Make Money in Stocks: A Winning System in Good Times Or Bad- William O'Neil",
-            label: "",
+            label: "Important",
             colour: "rgb(88, 141, 28, 0.5)",
             pinned: false,
         },
@@ -81,9 +81,7 @@ function App() {
         <div className="App" onClick={addNote}>
             <SidePannel
                 labels={labels}
-                setLabels={setLabels}
-                label={label}
-                setLabel={setLabel}
+                filter={filter}
                 setFilter={setFilter}
                 setEditLabel={setEditLabel}
             />
@@ -101,7 +99,7 @@ function App() {
                     setInpFlag={setInpFlag}
                     addNote={addNote}
                 />
-                <NotesHub
+                <NotesDisplay
                     others={others}
                     setOthers={setOthers}
                     pinned={pinned}
