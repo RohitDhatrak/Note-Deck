@@ -1,16 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, HTMLTextAreaElement, useEffect } from "react";
 
 function NoteBody({ note, setNote, setInpFlag, modal }) {
     let multilineTextBody = useRef < HTMLTextAreaElement > null;
 
-    function changeTextArea() {
-        console.log(multilineTextBody);
+    useEffect(() => {
         if (multilineTextBody) {
-            multilineTextBody.style.height = "43.2px";
+            multilineTextBody.style.height = "20px";
             multilineTextBody.style.height =
                 multilineTextBody.scrollHeight + "px";
         }
-    }
+    });
 
     return (
         <textarea
@@ -18,10 +17,7 @@ function NoteBody({ note, setNote, setInpFlag, modal }) {
             placeholder="Take a note..."
             type="text"
             onClick={() => (setInpFlag ? setInpFlag(true) : "")}
-            onChange={(e) => {
-                changeTextArea();
-                setNote({ ...note, body: e.target.value });
-            }}
+            onChange={(e) => setNote({ ...note, body: e.target.value })}
             ref={(ref) => (multilineTextBody = ref)}
             value={note.body}
         />
