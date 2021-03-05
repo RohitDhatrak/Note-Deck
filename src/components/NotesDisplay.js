@@ -3,7 +3,7 @@ import EditComponent from "./EditComponent";
 import NoteCard from "./NoteCard";
 import EditLabel from "./EditLabel";
 
-function NotesHub({
+function NotesDisplay({
     pinned,
     setPinned,
     others,
@@ -26,7 +26,7 @@ function NotesHub({
 
     function displayNotes(arrList) {
         return (
-            <div>
+            <div className="notes-flex-container">
                 {arrList.map((note) => (
                     <NoteCard
                         note={note}
@@ -46,20 +46,22 @@ function NotesHub({
     }
 
     function NotesCategories() {
+        const pinnedList = filter === "" ? pinned : getFilteredList(pinned);
+        const othersList = filter === "" ? others : getFilteredList(others);
         return (
             <div>
-                {pinned.length ? <h1 className="notes-pinned">Pinned</h1> : ""}
-                {filter === ""
-                    ? displayNotes(pinned)
-                    : displayNotes(getFilteredList(pinned))}
-                {others.length && pinned.length ? (
+                {pinnedList.length ? (
+                    <h1 className="notes-pinned">Pinned</h1>
+                ) : (
+                    ""
+                )}
+                {displayNotes(pinnedList)}
+                {othersList.length && pinnedList.length ? (
                     <h1 className="notes-others">Others</h1>
                 ) : (
                     ""
                 )}
-                {filter === ""
-                    ? displayNotes(others)
-                    : displayNotes(getFilteredList(others))}
+                {displayNotes(othersList)}
             </div>
         );
     }
@@ -125,10 +127,12 @@ function NotesHub({
             setPinned([noteObj, ...pinned]);
             setOthers(newOthers);
         }
+
+        // TODO Refactoring left >> used in NoteCard.js line no 33
         // console.log(note);
         // const newList = [...source];
         // const noteIdx = newList.findIndex((key) => key.uuid === note.uuid);
-        // // console.log(noteIdx);
+        // console.log(noteIdx);
         // const noteObj = { ...newList[noteIdx] };
         // noteObj.pinned = !note.pinned;
         // newList.splice(noteIdx, 1);
@@ -154,7 +158,7 @@ function NotesHub({
     }
 
     return (
-        <div className="notes-container">
+        <div>
             {modal ? (
                 <div className="edit-component-container" onClick={closeModal}>
                     <EditComponent
@@ -193,4 +197,4 @@ function NotesHub({
     );
 }
 
-export default NotesHub;
+export default NotesDisplay;
