@@ -8,8 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 2;
     transition: opacity 0.218s ease-in;
 }
 
-/* .footer is in AddNote.css */
+/* .note-taker and .footer are in NewNote.css */

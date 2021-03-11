@@ -1,6 +1,6 @@
 import React, { useRef, HTMLTextAreaElement, useEffect } from "react";
 
-function NoteBody({ note, setNote, setInpFlag, modal }) {
+function NoteBody({ note, setNote, setNewNoteFlag }) {
     let multilineTextBody = useRef < HTMLTextAreaElement > null;
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function NoteBody({ note, setNote, setInpFlag, modal }) {
             className="note-taker-body"
             placeholder="Take a note..."
             type="text"
-            onClick={() => (setInpFlag ? setInpFlag(true) : "")}
+            onClick={() => (setNewNoteFlag ? setNewNoteFlag(true) : null)}
             onChange={(e) => setNote({ ...note, body: e.target.value })}
             ref={(ref) => (multilineTextBody = ref)}
             value={note.body}

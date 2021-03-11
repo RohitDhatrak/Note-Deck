@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import url("./components/DisplayNotes/DisplayNotes.css");
+@import url("./components/NewNote/NewNote.css");
+@import url("./components/Helpers/NoteBody.css");
+@import url("./components/Helpers/NoteTitle.css");
+@import url("./components/Helpers/NoteFooter/NoteFooter.css");
+@import url("./components/DisplayNotes/NoteCard.css");
+@import url("./components/EditNote/EditNote.css");
+@import url("./components/Helpers/NoteFooter/ColourPicker.css");
+@import url("./components/Helpers/NoteFooter/LabelSelector.css");
+@import url("./components/SidePannel/EditLabel.css");
+@import url("./components/SidePannel/SidePannel.css");
+
+:root {
+    --primary-colour: #202124;
+    --secondary-colour: #e8eaed;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+    color: var(--secondary-colour);
+    background-color: var(--primary-colour);
+    outline: none;
+    font-size: 1rem;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 400;
+}
+
+.main-container {
+    margin-left: 23.125em;
+}

@@ -1,6 +1,6 @@
 import React from "react";
 
-function LabelSelector({ note, labels, changeProperty }) {
+function LabelSelector({ note, labelList, changeProperty }) {
     return (
         <div className="label-container">
             <a id="2" href="#2" className="label-link label-selector">
@@ -8,8 +8,9 @@ function LabelSelector({ note, labels, changeProperty }) {
                     ? "Add Label"
                     : note.label}
             </a>
+
             <div className="label-options">
-                {labels.map((label) => (
+                {labelList.map((label) => (
                     <div
                         className="label-select"
                         onClick={(e) =>

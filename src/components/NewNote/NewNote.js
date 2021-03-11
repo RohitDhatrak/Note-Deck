@@ -1,19 +1,18 @@
 import React from "react";
-import NoteTitle from "./NoteTitle";
-import NoteBody from "./NoteBody";
-import NoteFooter from "./NoteFooter";
+import NoteTitle from "../Helpers/NoteTitle";
+import NoteBody from "../Helpers/NoteBody";
+import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
 
-function AddNote({
-    colours,
-    labels,
+function NewNote({
+    labelList,
     others,
     setOthers,
     pinned,
     setPinned,
     note,
     setNote,
-    inpFlag,
-    setInpFlag,
+    newNoteFlag,
+    setNewNoteFlag,
     addNote,
 }) {
     return (
@@ -22,25 +21,28 @@ function AddNote({
             onClick={(e) => e.stopPropagation()}
             style={{ backgroundColor: `${note.colour}` }}
         >
-            <div style={{ display: inpFlag ? "inline" : "none" }}>
+            <div style={{ display: newNoteFlag ? "inline" : "none" }}>
                 <NoteTitle note={note} setNote={setNote} />
             </div>
 
-            <NoteBody note={note} setNote={setNote} setInpFlag={setInpFlag} />
+            <NoteBody
+                note={note}
+                setNote={setNote}
+                setNewNoteFlag={setNewNoteFlag}
+            />
 
             <div
                 className="footer"
-                style={{ display: inpFlag ? "inline" : "none" }}
+                style={{ display: newNoteFlag ? "inline" : "none" }}
             >
                 <NoteFooter
                     note={note}
-                    labels={labels}
-                    colours={colours}
+                    labelList={labelList}
                     pinned={pinned}
                     setPinned={setPinned}
                     others={others}
                     setOthers={setOthers}
-                    setInpFlag={setInpFlag}
+                    setNewNoteFlag={setNewNoteFlag}
                     setNote={setNote}
                 />
                 <button className="close" onClick={addNote}>
@@ -51,4 +53,4 @@ function AddNote({
     );
 }
 
-export default AddNote;
+export default NewNote;

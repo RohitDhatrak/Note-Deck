@@ -9,7 +9,6 @@
     border: rgb(232, 234, 237, 0.3) solid 1px;
     word-wrap: break-word;
     white-space: pre-wrap;
-    position: relative;
     transition-property: background, border, opacity, box-shadow, transform;
     transition-timing-function: ease-in;
     transition-duration: 0.218s;
@@ -36,11 +35,9 @@
 .card-pin-button {
     visibility: hidden;
     position: absolute;
-    right: 15px;
-    top: 15px;
-    float: right;
+    margin-left: 1em;
     cursor: pointer;
-    opacity: 0.54;
+    opacity: 0.45;
 }
 
 .card-pin-button:hover {

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { v4 } from "uuid";
-import "./styles/index.css";
-import AddNote from "./components/AddNote";
-import SidePannel from "./components/SidePannel";
-import NotesDisplay from "./components/NotesDisplay";
+import "./index.css";
+import NewNote from "./components/NewNote/NewNote";
+import SidePannel from "./components/SidePannel/SidePannel";
+import DisplayNotes from "./components/DisplayNotes/DisplayNotes";
+import EditNote from "./components/EditNote/EditNote";
+import colours from "./components/Helpers/Colours";
 
 function App() {
-    const [labels, setLabels] = useState(["None", "Important", "Todo"]);
-    const [label, setLabel] = useState("");
+    const [labelList, setLabelList] = useState(["None", "Important", "Todo"]);
     const [filter, setFilter] = useState("");
+
     const [pinned, setPinned] = useState([
         {
             uuid: "7fb5f11e-b884-4854-a968-e7fd054c56e9",
@@ -31,22 +33,9 @@ function App() {
             pinned: false,
         },
     ]);
-    const [inpFlag, setInpFlag] = useState(false);
-    const [editLabel, setEditLabel] = useState(false);
 
-    const colours = {
-        Colour: "rgb(32, 33, 36)",
-        Red: "rgb(134, 47, 39, 0.5)",
-        Orange: "rgb(172, 120, 25, 0.5)",
-        Yellow: "rgb(190, 177, 29, 0.5)",
-        Green: "rgb(88, 141, 28, 0.5)",
-        Teal: "rgb(25, 117, 96, 0.5)",
-        Blue: "rgb(32, 127, 148, 0.5)",
-        Purple: "rgb(97, 33, 150, 0.5)",
-        Pink: "rgb(141, 39, 95, 0.5)",
-        Brown: "rgb(110, 55, 17, 0.5)",
-        Grey: "rgb(98, 99, 99, 0.5)",
-    };
+    const [newNoteFlag, setNewNoteFlag] = useState(false);
+    const [editModal, setEditModal] = useState(false);
     const [note, setNote] = useState({
         uuid: v4(),
         title: "",
@@ -55,6 +44,7 @@ function App() {
         colour: colours.Colour,
         pinned: false,
     });
+    const [editNote, setEditNote] = useState();
 
     function addNote() {
         let title = note.title.trim();
@@ -74,44 +64,50 @@ function App() {
             colour: colours.Colour,
             pinned: false,
         });
-        setInpFlag(false);
+        setNewNoteFlag(false);
     }
 
     return (
         <div className="App" onClick={addNote}>
             <SidePannel
-                labels={labels}
+                labelList={labelList}
                 filter={filter}
                 setFilter={setFilter}
-                setEditLabel={setEditLabel}
+                setLabelList={setLabelList}
             />
             <div className="main-container">
-                <AddNote
-                    colours={colours}
-                    labels={labels}
+                <NewNote
+                    labelList={labelList}
                     others={others}
                     setOthers={setOthers}
                     pinned={pinned}
                     setPinned={setPinned}
                     note={note}
                     setNote={setNote}
-                    inpFlag={inpFlag}
-                    setInpFlag={setInpFlag}
+                    newNoteFlag={newNoteFlag}
+                    setNewNoteFlag={setNewNoteFlag}
                     addNote={addNote}
                 />
-                <NotesDisplay
+                <DisplayNotes
                     others={others}
                     setOthers={setOthers}
                     pinned={pinned}
                     setPinned={setPinned}
                     filter={filter}
-                    labels={labels}
-                    setLabels={setLabels}
-                    label={label}
-                    setLabel={setLabel}
-                    colours={colours}
-                    editLabel={editLabel}
-                    setEditLabel={setEditLabel}
+                    labelList={labelList}
+                    setEditModal={setEditModal}
+                    setEditNote={setEditNote}
+                />
+                <EditNote
+                    pinned={pinned}
+                    setPinned={setPinned}
+                    others={others}
+                    setOthers={setOthers}
+                    labelList={labelList}
+                    editNote={editNote}
+                    setEditNote={setEditNote}
+                    setEditModal={setEditModal}
+                    editModal={editModal}
                 />
             </div>
         </div>
