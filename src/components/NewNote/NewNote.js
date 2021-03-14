@@ -5,7 +5,7 @@ import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
 import { useNotes } from "../../ContextProviders/NotesContext";
 
 function NewNote({ labelList }) {
-    const { note, setNote, addNote, newNoteFlag } = useNotes();
+    const { note, setNote, addNote, newNoteFlag, setNewNoteFlag } = useNotes();
 
     return (
         <div
@@ -17,7 +17,11 @@ function NewNote({ labelList }) {
                 <NoteTitle note={note} setNote={setNote} />
             </div>
 
-            <NoteBody note={note} setNote={setNote} />
+            <NoteBody
+                note={note}
+                setNote={setNote}
+                setNewNoteFlag={setNewNoteFlag}
+            />
 
             <div
                 className="footer"

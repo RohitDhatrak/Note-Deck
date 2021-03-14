@@ -17,15 +17,16 @@ function NoteFooter({ note, setNote, labelList }) {
     } = useNotes();
 
     function changeProperty(value, property) {
-        if (setEditModal !== undefined) {
-            setNote({ ...note, [property]: value });
-        } else {
+        if (setNote === undefined) {
+            // i.e component being used as Card Footer
             note[property] = value;
             if (note.pinned) {
                 setPinned([...pinned]);
             } else {
                 setOthers([...others]);
             }
+        } else {
+            setNote({ ...note, [property]: value });
         }
     }
 
