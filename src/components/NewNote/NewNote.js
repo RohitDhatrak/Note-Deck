@@ -2,19 +2,11 @@ import React from "react";
 import NoteTitle from "../Helpers/NoteTitle";
 import NoteBody from "../Helpers/NoteBody";
 import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
+import { useNotes } from "../../ContextProviders/NotesContext";
 
-function NewNote({
-    labelList,
-    others,
-    setOthers,
-    pinned,
-    setPinned,
-    note,
-    setNote,
-    newNoteFlag,
-    setNewNoteFlag,
-    addNote,
-}) {
+function NewNote({ labelList }) {
+    const { note, setNote, addNote, newNoteFlag } = useNotes();
+
     return (
         <div
             className="note-taker"
@@ -25,11 +17,7 @@ function NewNote({
                 <NoteTitle note={note} setNote={setNote} />
             </div>
 
-            <NoteBody
-                note={note}
-                setNote={setNote}
-                setNewNoteFlag={setNewNoteFlag}
-            />
+            <NoteBody note={note} setNote={setNote} />
 
             <div
                 className="footer"
@@ -37,13 +25,8 @@ function NewNote({
             >
                 <NoteFooter
                     note={note}
-                    labelList={labelList}
-                    pinned={pinned}
-                    setPinned={setPinned}
-                    others={others}
-                    setOthers={setOthers}
-                    setNewNoteFlag={setNewNoteFlag}
                     setNote={setNote}
+                    labelList={labelList}
                 />
                 <button className="close" onClick={addNote}>
                     Close

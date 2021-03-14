@@ -1,7 +1,8 @@
 import React from "react";
 import { ColourPalletSvg } from "../Svg";
+import colours from "../Colours";
 
-function ColourPicker({ colours, changeProperty }) {
+function ColourPicker({ changeProperty }) {
     return (
         <div className="colour-container">
             <a id="1" href="#1" className="colour-link">

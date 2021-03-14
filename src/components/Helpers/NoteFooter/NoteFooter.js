@@ -4,18 +4,18 @@ import ColourPicker from "./ColourPicker";
 import LabelSelector from "./LabelSelector";
 import { DeleteSvg } from "../Svg";
 import colours from "../Colours";
+import { useNotes } from "../../../ContextProviders/NotesContext";
 
-function NoteFooter({
-    note,
-    labelList,
-    pinned,
-    setPinned,
-    others,
-    setOthers,
-    setEditModal,
-    setNewNoteFlag,
-    setNote,
-}) {
+function NoteFooter({ note, setNote, labelList }) {
+    const {
+        pinned,
+        setPinned,
+        others,
+        setOthers,
+        setNewNoteFlag,
+        setEditModal,
+    } = useNotes();
+
     function changeProperty(value, property) {
         if (setEditModal !== undefined) {
             setNote({ ...note, [property]: value });
@@ -61,7 +61,7 @@ function NoteFooter({
                 changeProperty={changeProperty}
             />
 
-            <ColourPicker colours={colours} changeProperty={changeProperty} />
+            <ColourPicker changeProperty={changeProperty} />
 
             <button
                 onClick={() =>

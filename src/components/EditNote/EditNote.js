@@ -2,18 +2,20 @@ import React from "react";
 import NoteTitle from "../Helpers/NoteTitle";
 import NoteBody from "../Helpers/NoteBody";
 import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
+import { useNotes } from "../../ContextProviders/NotesContext";
 
-function EditNote({
-    pinned,
-    setPinned,
-    others,
-    setOthers,
-    labelList,
-    editNote,
-    setEditNote,
-    setEditModal,
-    editModal,
-}) {
+function EditNote({ labelList }) {
+    const {
+        pinned,
+        setPinned,
+        others,
+        setOthers,
+        editNote,
+        setEditNote,
+        editModal,
+        setEditModal,
+    } = useNotes();
+
     function moveNote(source, target, note) {
         const noteIdx = source.findIndex((key) => key.uuid === note.uuid);
         source.splice(noteIdx, 1);
@@ -56,6 +58,7 @@ function EditNote({
         saveNote(editNote);
         setEditModal(false);
     }
+
     return (
         <div>
             {editModal ? (
@@ -72,11 +75,6 @@ function EditNote({
                                 note={editNote}
                                 setNote={setEditNote}
                                 labelList={labelList}
-                                pinned={pinned}
-                                setPinned={setPinned}
-                                others={others}
-                                setOthers={setOthers}
-                                setEditModal={setEditModal}
                             />
                         </div>
                         <button

@@ -1,14 +1,13 @@
-import React, { useRef, HTMLTextAreaElement, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { UnpinSvg, PinSvg } from "../Helpers/Svg";
 
 function NoteTitle({ note, setNote }) {
-    let multilineTextTitle = useRef < HTMLTextAreaElement > null;
+    let textAreaRef = useRef(null);
 
     useEffect(() => {
-        if (multilineTextTitle) {
-            multilineTextTitle.style.height = "20px";
-            multilineTextTitle.style.height =
-                multilineTextTitle.scrollHeight + "px";
+        if (textAreaRef) {
+            textAreaRef.style.height = "20px";
+            textAreaRef.style.height = textAreaRef.scrollHeight + "px";
         }
     });
 
@@ -22,7 +21,7 @@ function NoteTitle({ note, setNote }) {
                 onChange={(e) => {
                     setNote({ ...note, title: e.target.value });
                 }}
-                ref={(ref) => (multilineTextTitle = ref)}
+                ref={(ref) => (textAreaRef = ref)}
                 value={note.title}
             />
 

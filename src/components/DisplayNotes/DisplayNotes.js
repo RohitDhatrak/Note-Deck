@@ -1,17 +1,9 @@
 import React from "react";
 import NoteCard from "./NoteCard";
+import { useNotes } from "../../ContextProviders/NotesContext";
 
-function DisplayNotes({
-    pinned,
-    setPinned,
-    others,
-    setOthers,
-    filter,
-    labelList,
-    colours,
-    setEditModal,
-    setEditNote,
-}) {
+function DisplayNotes({ filter, labelList }) {
+    const { pinned, others } = useNotes();
     function getFilteredList(arrList) {
         return arrList.filter((key) => key.label === filter);
     }
@@ -20,17 +12,7 @@ function DisplayNotes({
         return (
             <div className="notes-flex-container">
                 {arrList.map((note) => (
-                    <NoteCard
-                        note={note}
-                        labelList={labelList}
-                        colours={colours}
-                        setEditModal={setEditModal}
-                        setEditNote={setEditNote}
-                        pinned={pinned}
-                        setPinned={setPinned}
-                        others={others}
-                        setOthers={setOthers}
-                    />
+                    <NoteCard note={note} labelList={labelList} />
                 ))}
             </div>
         );

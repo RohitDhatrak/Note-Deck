@@ -1,17 +1,18 @@
 import React from "react";
 import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
 import { UnpinSvg, PinSvg } from "../Helpers/Svg";
+import { useNotes } from "../../ContextProviders/NotesContext";
 
-function NoteCard({
-    labelList,
-    setEditModal,
-    setEditNote,
-    others,
-    setOthers,
-    pinned,
-    setPinned,
-    note,
-}) {
+function NoteCard({ labelList, note }) {
+    const {
+        pinned,
+        setPinned,
+        others,
+        setOthers,
+        setEditNote,
+        setEditModal,
+    } = useNotes();
+
     function displayModal(e) {
         setEditModal(true);
         setEditNote(note);
@@ -86,10 +87,6 @@ function NoteCard({
                     className="card-footer"
                     note={note}
                     labelList={labelList}
-                    pinned={pinned}
-                    setPinned={setPinned}
-                    others={others}
-                    setOthers={setOthers}
                 />
             </div>
         </div>

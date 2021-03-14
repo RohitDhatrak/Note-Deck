@@ -1,24 +1,29 @@
-import React, { useRef, HTMLTextAreaElement, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
+import { useNotes } from "../../ContextProviders/NotesContext";
 
-function NoteBody({ note, setNote, setNewNoteFlag }) {
-    let multilineTextBody = useRef < HTMLTextAreaElement > null;
+function NoteBody({ note, setNote }) {
+    const { setNewNoteFlag } = useNotes();
+    let textAreaRef = useRef(null);
 
     useEffect(() => {
-        if (multilineTextBody) {
-            multilineTextBody.style.height = "20px";
-            multilineTextBody.style.height =
-                multilineTextBody.scrollHeight + "px";
+        if (textAreaRef) {
+            textAreaRef.style.height = "20px";
+            textAreaRef.style.height = textAreaRef.scrollHeight + "px";
         }
-    });
+    }, [note]);
 
     return (
         <textarea
             className="note-taker-body"
             placeholder="Take a note..."
             type="text"
+            autoFocus
             onClick={() => (setNewNoteFlag ? setNewNoteFlag(true) : null)}
-            onChange={(e) => setNote({ ...note, body: e.target.value })}
-            ref={(ref) => (multilineTextBody = ref)}
+            onChange={(e) => {
+                setNewNoteFlag(true);
+                setNote({ ...note, body: e.target.value });
+            }}
+            ref={(ref) => (textAreaRef = ref)}
             value={note.body}
         />
     );
