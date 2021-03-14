@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import { useNotes } from "../../ContextProviders/NotesContext";
 
-function NoteBody({ note, setNote }) {
-    const { setNewNoteFlag } = useNotes();
+function NoteBody({ note, setNote, setNewNoteFlag }) {
     let textAreaRef = useRef(null);
 
     useEffect(() => {
@@ -12,17 +10,26 @@ function NoteBody({ note, setNote }) {
         }
     }, [note]);
 
+    function expandNewNote() {
+        if (setNewNoteFlag !== undefined) {
+            // i.e component is being used in New Note
+            setNewNoteFlag(true);
+        }
+    }
+
+    function saveNoteBody(e) {
+        expandNewNote();
+        setNote({ ...note, body: e.target.value });
+    }
+
     return (
         <textarea
             className="note-taker-body"
             placeholder="Take a note..."
             type="text"
             autoFocus
-            onClick={() => (setNewNoteFlag ? setNewNoteFlag(true) : null)}
-            onChange={(e) => {
-                setNewNoteFlag(true);
-                setNote({ ...note, body: e.target.value });
-            }}
+            onClick={expandNewNote}
+            onChange={saveNoteBody}
             ref={(ref) => (textAreaRef = ref)}
             value={note.body}
         />
