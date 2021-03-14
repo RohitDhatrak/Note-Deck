@@ -35,7 +35,7 @@
 .card-pin-button {
     visibility: hidden;
     position: absolute;
-    margin-left: 1em;
+    margin-left: 1.25em;
     cursor: pointer;
     opacity: 0.45;
 }
