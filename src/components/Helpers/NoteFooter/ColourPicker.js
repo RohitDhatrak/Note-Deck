@@ -5,9 +5,9 @@ import colours from "../Colours";
 function ColourPicker({ changeProperty }) {
     return (
         <div className="colour-container">
-            <a id="1" href="#1" className="colour-link">
+            <span className="colour-link">
                 <ColourPalletSvg />
-            </a>
+            </span>
 
             <div className="colour-options">
                 {Object.keys(colours).map((colour) => (

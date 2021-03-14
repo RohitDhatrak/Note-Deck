@@ -3,11 +3,11 @@ import React from "react";
 function LabelSelector({ note, labelList, changeProperty }) {
     return (
         <div className="label-container">
-            <a id="2" href="#2" className="label-link label-selector">
+            <span className="label-link label-selector">
                 {note.label === "None" || note.label === ""
                     ? "Add Label"
                     : note.label}
-            </a>
+            </span>
 
             <div className="label-options">
                 {labelList.map((label) => (
