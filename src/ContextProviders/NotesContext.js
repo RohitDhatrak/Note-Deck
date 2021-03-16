@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { v4 } from "uuid";
 import colours from "../components/Helpers/Colours";
-export const NotesContext = createContext();
+const NotesContext = createContext();
 
 export function NotesProvider({ children }) {
     const [pinned, setPinned] = useState([
