@@ -1,6 +1,8 @@
 import React from "react";
+import { useLabel } from "../../../ContextProviders/LabelContext";
 
-function LabelSelector({ note, labelList, changeProperty }) {
+function LabelSelector({ note, changeProperty }) {
+    const { labelList } = useLabel();
     return (
         <div className="label-container">
             <span className="label-link label-selector">

@@ -3,7 +3,7 @@ import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
 import { UnpinSvg, PinSvg } from "../Helpers/Svg";
 import { useNotes } from "../../ContextProviders/NotesContext";
 
-function NoteCard({ labelList, note }) {
+function NoteCard({ note }) {
     const {
         pinned,
         setPinned,
@@ -83,11 +83,7 @@ function NoteCard({ labelList, note }) {
             <p className="card-body">{note.body}</p>
 
             <div className="card-footer">
-                <NoteFooter
-                    className="card-footer"
-                    note={note}
-                    labelList={labelList}
-                />
+                <NoteFooter className="card-footer" note={note} />
             </div>
         </div>
     );

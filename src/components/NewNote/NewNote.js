@@ -4,7 +4,7 @@ import NoteBody from "../Helpers/NoteBody";
 import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
 import { useNotes } from "../../ContextProviders/NotesContext";
 
-function NewNote({ labelList }) {
+function NewNote() {
     const { note, setNote, addNote, newNoteFlag, setNewNoteFlag } = useNotes();
 
     return (
@@ -27,11 +27,7 @@ function NewNote({ labelList }) {
                 className="footer"
                 style={{ display: newNoteFlag ? "inline" : "none" }}
             >
-                <NoteFooter
-                    note={note}
-                    setNote={setNote}
-                    labelList={labelList}
-                />
+                <NoteFooter note={note} setNote={setNote} />
                 <button className="close" onClick={addNote}>
                     Close
                 </button>

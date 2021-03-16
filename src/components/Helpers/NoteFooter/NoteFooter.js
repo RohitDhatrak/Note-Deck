@@ -6,7 +6,7 @@ import { DeleteSvg } from "../Svg";
 import colours from "../Colours";
 import { useNotes } from "../../../ContextProviders/NotesContext";
 
-function NoteFooter({ note, setNote, labelList }) {
+function NoteFooter({ note, setNote }) {
     const {
         pinned,
         setPinned,
@@ -58,7 +58,6 @@ function NoteFooter({ note, setNote, labelList }) {
         <div onClick={(e) => e.stopPropagation()} className="note-taker-footer">
             <LabelSelector
                 note={note}
-                labelList={labelList}
                 changeProperty={changeProperty}
             />
 

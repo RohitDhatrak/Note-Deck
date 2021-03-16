@@ -1,8 +1,10 @@
 import React from "react";
 import NoteCard from "./NoteCard";
 import { useNotes } from "../../ContextProviders/NotesContext";
+import { useLabel } from "../../ContextProviders/LabelContext";
 
-function DisplayNotes({ filter, labelList }) {
+function DisplayNotes() {
+    const { filter } = useLabel();
     const { pinned, others } = useNotes();
     function getFilteredList(arrList) {
         return arrList.filter((key) => key.label === filter);
@@ -12,7 +14,7 @@ function DisplayNotes({ filter, labelList }) {
         return (
             <div className="notes-flex-container">
                 {arrList.map((note) => (
-                    <NoteCard note={note} labelList={labelList} />
+                    <NoteCard note={note} />
                 ))}
             </div>
         );

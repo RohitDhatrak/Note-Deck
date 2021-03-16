@@ -4,7 +4,7 @@ import NoteBody from "../Helpers/NoteBody";
 import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
 import { useNotes } from "../../ContextProviders/NotesContext";
 
-function EditNote({ labelList }) {
+function EditNote() {
     const {
         pinned,
         setPinned,
@@ -71,11 +71,7 @@ function EditNote({ labelList }) {
                         <NoteTitle note={editNote} setNote={setEditNote} />
                         <NoteBody note={editNote} setNote={setEditNote} />
                         <div className="footer">
-                            <NoteFooter
-                                note={editNote}
-                                setNote={setEditNote}
-                                labelList={labelList}
-                            />
+                            <NoteFooter note={editNote} setNote={setEditNote} />
                         </div>
                         <button
                             className="close"

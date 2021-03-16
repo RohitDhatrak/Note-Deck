@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { LabelSvg, HomeSvg, EditSvg } from "../Helpers/Svg";
 import EditLabel from "./EditLabel";
+import { useLabel } from "../../ContextProviders/LabelContext";
 
-function SidePannel({ labelList, filter, setFilter, setLabelList }) {
+function SidePannel() {
+    const { labelList, setLabelList, filter, setFilter } = useLabel();
     const [selected, setSelected] = useState("Notes");
     const [editLabelModal, setEditLabelModal] = useState(false);
     const [label, setLabel] = useState("");
