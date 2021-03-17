@@ -5,24 +5,45 @@ import { useLabel } from "../../ContextProviders/LabelContext";
 
 function DisplayNotes() {
     const { filter } = useLabel();
-    const { pinned, others } = useNotes();
-    function getFilteredList(arrList) {
-        return arrList.filter((key) => key.label === filter);
+    const { notesList } = useNotes();
+
+    function sortByTime(obj) {
+        const listOfKeys = Object.keys(obj);
+        listOfKeys.sort(
+            (a, b) => notesList[b].lastModified - notesList[a].lastModified
+        );
+        return listOfKeys;
     }
 
-    function displayNotes(arrList) {
+    function sortByLabel(list) {
+        return list.filter((key) => notesList[key].label === filter);
+    }
+
+    function filterPinned(list) {
+        return list.filter((key) => notesList[key].pinned);
+    }
+
+    function filterUnpinned(list) {
+        return list.filter((key) => !notesList[key].pinned);
+    }
+
+    function displayNotes(list) {
         return (
             <div className="notes-flex-container">
-                {arrList.map((note) => (
-                    <NoteCard note={note} />
+                {list.map((noteKey) => (
+                    <NoteCard noteKey={noteKey} />
                 ))}
             </div>
         );
     }
 
     function NotesCategories() {
-        const pinnedList = filter === "" ? pinned : getFilteredList(pinned);
-        const othersList = filter === "" ? others : getFilteredList(others);
+        const sortedByTime = sortByTime(notesList);
+        const filteredByLabel =
+            filter === "" ? sortedByTime : sortByLabel(sortedByTime);
+        const pinnedList = filterPinned(filteredByLabel);
+        const othersList = filterUnpinned(filteredByLabel);
+
         return (
             <div>
                 {pinnedList.length ? (

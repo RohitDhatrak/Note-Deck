@@ -8,66 +8,58 @@ import { useNotes } from "../../../ContextProviders/NotesContext";
 
 function NoteFooter({ note, setNote }) {
     const {
-        pinned,
-        setPinned,
-        others,
-        setOthers,
+        notesList,
+        setNotesList,
         setNewNoteFlag,
         setEditModal,
     } = useNotes();
 
-    function changeProperty(value, property) {
+    function changeProperty({ value, property }) {
         if (setNote === undefined) {
             // i.e component being used as Card Footer
-            note[property] = value;
-            if (note.pinned) {
-                setPinned([...pinned]);
-            } else {
-                setOthers([...others]);
+            function getNewList(currentNotes) {
+                const newList = { ...currentNotes };
+                delete newList[note.uuid];
+                note[property] = value;
+                return { ...newList, [note.uuid]: note };
             }
+            setNotesList((currentNotes) => getNewList(currentNotes));
         } else {
-            setNote({ ...note, [property]: value });
+            setNote((currNote) => ({ ...currNote, [property]: value }));
         }
     }
 
-    function deleteNote(list) {
-        const newList = [...list];
-        const noteIdx = list.findIndex((key) => key.uuid === note.uuid);
-        if (noteIdx === -1) {
+    function deleteNote() {
+        if (!(note.uuid in notesList)) {
             setNewNoteFlag(false);
             setNote({
                 uuid: v4(),
                 title: "",
                 body: "",
                 label: "",
-                colour: colours.Colour,
+                colour: colours.Default,
                 pinned: false,
             });
             return;
         }
-        newList.splice(noteIdx, 1);
-        if (note.pinned) {
-            setPinned(newList);
-        } else {
-            setOthers(newList);
+
+        function getNewList(currentNotes) {
+            const newList = { ...currentNotes };
+            delete newList[note.uuid];
+            return { ...newList };
         }
+        setNotesList((currentNotes) => getNewList(currentNotes));
+
         if (setEditModal !== undefined) setEditModal(false);
     }
 
     return (
         <div onClick={(e) => e.stopPropagation()} className="note-taker-footer">
-            <LabelSelector
-                note={note}
-                changeProperty={changeProperty}
-            />
+            <LabelSelector note={note} changeProperty={changeProperty} />
 
             <ColourPicker changeProperty={changeProperty} />
 
-            <button
-                onClick={() =>
-                    note.pinned ? deleteNote(pinned) : deleteNote(others)
-                }
-            >
+            <button onClick={deleteNote}>
                 <DeleteSvg />
             </button>
         </div>
