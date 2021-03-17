@@ -3,6 +3,13 @@ import { ColourPalletSvg } from "../Svg";
 import colours from "../Colours";
 
 function ColourPicker({ changeProperty }) {
+    function changeColour(e) {
+        changeProperty({
+            value: e.target.style.backgroundColor,
+            property: "colour",
+        });
+    }
+
     return (
         <div className="colour-container">
             <span className="colour-link">
@@ -13,12 +20,7 @@ function ColourPicker({ changeProperty }) {
                 {Object.keys(colours).map((colour) => (
                     <div
                         className="colour"
-                        onClick={(e) =>
-                            changeProperty(
-                                e.target.style.backgroundColor,
-                                "colour"
-                            )
-                        }
+                        onClick={(e) => changeColour(e)}
                         style={{ backgroundColor: `${colours[colour]}` }}
                     ></div>
                 ))}

@@ -3,6 +3,17 @@ import { useLabel } from "../../../ContextProviders/LabelContext";
 
 function LabelSelector({ note, changeProperty }) {
     const { labelList } = useLabel();
+    function selectLabel(e, label) {
+        if (label === "None") {
+            changeProperty({ value: "", property: "label" });
+        } else {
+            changeProperty({
+                value: e.target.textContent,
+                property: "label",
+            });
+        }
+    }
+
     return (
         <div className="label-container">
             <span className="label-link label-selector">
@@ -15,11 +26,8 @@ function LabelSelector({ note, changeProperty }) {
                 {labelList.map((label) => (
                     <div
                         className="label-select"
-                        onClick={(e) =>
-                            label === "None"
-                                ? changeProperty("", "label")
-                                : changeProperty(e.target.textContent, "label")
-                        }
+                        onClick={(e) => selectLabel(e, label)}
+                        key={label}
                     >
                         {label}
                     </div>

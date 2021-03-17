@@ -11,6 +11,22 @@ function NoteTitle({ note, setNote }) {
         }
     });
 
+    function saveNoteTitle(e) {
+        setNote((currNote) => ({
+            ...currNote,
+            title: e.target.value,
+            lastEdited: Date.now(),
+        }));
+    }
+
+    function togglePin() {
+        setNote((currNote) => ({
+            ...currNote,
+            pinned: !note.pinned,
+            lastModified: Date.now(),
+        }));
+    }
+
     return (
         <div className="note-taker-title">
             <textarea
@@ -18,9 +34,7 @@ function NoteTitle({ note, setNote }) {
                 style={{ display: "inline" }}
                 placeholder="Title"
                 type="text"
-                onChange={(e) => {
-                    setNote({ ...note, title: e.target.value });
-                }}
+                onChange={saveNoteTitle}
                 ref={(ref) => (textAreaRef = ref)}
                 value={note.title}
             />
@@ -28,7 +42,7 @@ function NoteTitle({ note, setNote }) {
             <button
                 className="title-pin-button"
                 style={{ display: "inline" }}
-                onClick={() => setNote({ ...note, pinned: !note.pinned })}
+                onClick={togglePin}
             >
                 {note.pinned ? <UnpinSvg /> : <PinSvg />}
             </button>
