@@ -1,5 +1,5 @@
 const colours = {
-    Colour: "rgb(32, 33, 36)",
+    Default: "rgb(32, 33, 36)",
     Red: "rgb(134, 47, 39, 0.5)",
     Orange: "rgb(172, 120, 25, 0.5)",
     Yellow: "rgb(190, 177, 29, 0.5)",
