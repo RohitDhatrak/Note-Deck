@@ -1,6 +1,6 @@
 .side-bar {
     position: fixed;
-    top: 0;
+    top: 4em;
     left: 0;
     width: 280px;
     height: 100vh;
