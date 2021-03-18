@@ -9,6 +9,7 @@ export function EditLabel({ label, setLabel, addNewLabel }) {
             <input
                 className="edit-label-input"
                 type="text"
+                autoFocus
                 placeholder="New Label"
                 onChange={(e) => setLabel(e.target.value)}
                 value={label}
