@@ -6,10 +6,15 @@ import { EditNote } from "./components/EditNote/EditNote";
 import { useNotes } from "./ContextProviders/NotesContext";
 
 function App() {
-    const { addNote } = useNotes();
+    const { addNote, newNoteFlag } = useNotes();
+    function saveOnOutOfFocus() {
+        if (newNoteFlag) {
+            addNote();
+        }
+    }
 
     return (
-        <div className="App" onClick={addNote}>
+        <div className="App" onClick={saveOnOutOfFocus}>
             <SidePannel />
             <div className="main-container">
                 <NewNote />
