@@ -4,34 +4,34 @@ import { useNotes } from "../../ContextProviders/NotesContext";
 import { useLabel } from "../../ContextProviders/LabelContext";
 
 function DisplayNotes() {
-    const { filter } = useLabel();
+    const { selectedLabel } = useLabel();
     const { notesList } = useNotes();
 
-    function sortByTime(obj) {
-        const listOfKeys = Object.keys(obj);
-        listOfKeys.sort(
+    function sortByTime(notesObject) {
+        const listOfIds = Object.keys(notesObject);
+        listOfIds.sort(
             (a, b) => notesList[b].lastModified - notesList[a].lastModified
         );
-        return listOfKeys;
+        return listOfIds;
     }
 
-    function sortByLabel(list) {
-        return list.filter((key) => notesList[key].label === filter);
+    function sortByLabel(listOfIds) {
+        return listOfIds.filter((id) => notesList[id].label === selectedLabel);
     }
 
-    function filterPinned(list) {
-        return list.filter((key) => notesList[key].pinned);
+    function filterPinned(listOfIds) {
+        return listOfIds.filter((id) => notesList[id].pinned);
     }
 
-    function filterUnpinned(list) {
-        return list.filter((key) => !notesList[key].pinned);
+    function filterUnpinned(listOfIds) {
+        return listOfIds.filter((id) => !notesList[id].pinned);
     }
 
-    function displayNotes(list) {
+    function displayNotes(listOfIds) {
         return (
             <div className="notes-flex-container">
-                {list.map((noteKey) => (
-                    <NoteCard noteKey={noteKey} />
+                {listOfIds.map((noteId) => (
+                    <NoteCard noteId={noteId} />
                 ))}
             </div>
         );
@@ -40,7 +40,7 @@ function DisplayNotes() {
     function NotesCategories() {
         const sortedByTime = sortByTime(notesList);
         const filteredByLabel =
-            filter === "" ? sortedByTime : sortByLabel(sortedByTime);
+            selectedLabel === "" ? sortedByTime : sortByLabel(sortedByTime);
         const pinnedList = filterPinned(filteredByLabel);
         const othersList = filterUnpinned(filteredByLabel);
 

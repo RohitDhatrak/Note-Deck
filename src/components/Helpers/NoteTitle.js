@@ -12,16 +12,16 @@ function NoteTitle({ note, setNote }) {
     });
 
     function saveNoteTitle(e) {
-        setNote((currNote) => ({
-            ...currNote,
+        setNote((currentNote) => ({
+            ...currentNote,
             title: e.target.value,
             lastEdited: Date.now(),
         }));
     }
 
     function togglePin() {
-        setNote((currNote) => ({
-            ...currNote,
+        setNote((currentNote) => ({
+            ...currentNote,
             pinned: !note.pinned,
             lastModified: Date.now(),
         }));

@@ -19,8 +19,8 @@ function NoteBody({ note, setNote, setNewNoteFlag }) {
 
     function saveNoteBody(e) {
         expandNewNote();
-        setNote((currNote) => ({
-            ...currNote,
+        setNote((currentNote) => ({
+            ...currentNote,
             body: e.target.value,
             lastEdited: Date.now(),
         }));

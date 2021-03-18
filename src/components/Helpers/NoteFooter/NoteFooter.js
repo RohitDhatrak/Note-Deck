@@ -17,15 +17,15 @@ function NoteFooter({ note, setNote }) {
     function changeProperty({ value, property }) {
         if (setNote === undefined) {
             // i.e component being used as Card Footer
-            function getNewList(currentNotes) {
-                const newList = { ...currentNotes };
-                delete newList[note.uuid];
+            function getNewList(currentNotesList) {
+                const newNotesList = { ...currentNotesList };
+                delete newNotesList[note.uuid];
                 note[property] = value;
-                return { ...newList, [note.uuid]: note };
+                return { ...newNotesList, [note.uuid]: note };
             }
-            setNotesList((currentNotes) => getNewList(currentNotes));
+            setNotesList((currentNotesList) => getNewList(currentNotesList));
         } else {
-            setNote((currNote) => ({ ...currNote, [property]: value }));
+            setNote((currentNote) => ({ ...currentNote, [property]: value }));
         }
     }
 
@@ -43,12 +43,12 @@ function NoteFooter({ note, setNote }) {
             return;
         }
 
-        function getNewList(currentNotes) {
-            const newList = { ...currentNotes };
-            delete newList[note.uuid];
-            return { ...newList };
+        function getNewList(currentNotesList) {
+            const newNotesList = { ...currentNotesList };
+            delete newNotesList[note.uuid];
+            return { ...newNotesList };
         }
-        setNotesList((currentNotes) => getNewList(currentNotes));
+        setNotesList((currentNotesList) => getNewList(currentNotesList));
 
         if (setEditModal !== undefined) setEditModal(false);
     }

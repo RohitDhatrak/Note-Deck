@@ -14,12 +14,12 @@ function EditNote() {
     } = useNotes();
 
     function saveNote() {
-        function getNewList(currentNotes) {
-            const newList = { ...currentNotes };
-            delete newList[editNote.uuid];
-            return { ...newList, [editNote.uuid]: editNote };
+        function getNewList(currentNotesList) {
+            const newNotesList = { ...currentNotesList };
+            delete newNotesList[editNote.uuid];
+            return { ...newNotesList, [editNote.uuid]: editNote };
         }
-        setNotesList((currentNotes) => getNewList(currentNotes));
+        setNotesList((currentNotesList) => getNewList(currentNotesList));
     }
 
     function closeModal() {

@@ -3,19 +3,19 @@ import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
 import { UnpinSvg, PinSvg } from "../Helpers/Svg";
 import { useNotes } from "../../ContextProviders/NotesContext";
 
-function NoteCard({ noteKey }) {
+function NoteCard({ noteId }) {
     const { notesList, setNotesList, setEditNote, setEditModal } = useNotes();
-    const note = notesList[noteKey];
+    const note = notesList[noteId];
 
-    function displayModal() {
+    function displayEditModal() {
         setEditModal(true);
         setEditNote(note);
     }
 
     function togglePin() {
-        function getNewNotes(currentNotes) {
-            const newList = { ...currentNotes };
-            delete newList[noteKey];
+        function getNewList(currentNotesList) {
+            const newNotesList = { ...currentNotesList };
+            delete newNotesList[noteId];
             const newNote = { ...note };
 
             if (note.pinned) {
@@ -25,12 +25,12 @@ function NoteCard({ noteKey }) {
             }
 
             return {
-                [noteKey]: { ...newNote, lastModified: Date.now() },
-                ...newList,
+                [noteId]: { ...newNote, lastModified: Date.now() },
+                ...newNotesList,
             };
         }
 
-        setNotesList((currentNotes) => getNewNotes(currentNotes));
+        setNotesList((currentNotesList) => getNewList(currentNotesList));
     }
 
     return (
@@ -39,7 +39,7 @@ function NoteCard({ noteKey }) {
             style={{
                 backgroundColor: `${note.colour}`,
             }}
-            onClick={displayModal}
+            onClick={displayEditModal}
             key={note.uuid}
         >
             <div className="card-title">{note.title}</div>
