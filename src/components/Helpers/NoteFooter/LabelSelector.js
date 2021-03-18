@@ -3,7 +3,7 @@ import { useLabel } from "../../../ContextProviders/LabelContext";
 
 function LabelSelector({ note, changeProperty }) {
     const { labelList } = useLabel();
-    function selectLabel(e, label) {
+    function selectLabel({ e, label }) {
         if (label === "None") {
             changeProperty({ value: "", property: "label" });
         } else {
@@ -26,7 +26,7 @@ function LabelSelector({ note, changeProperty }) {
                 {labelList.map((label) => (
                     <div
                         className="label-select"
-                        onClick={(e) => selectLabel(e, label)}
+                        onClick={(e) => selectLabel({ e, label })}
                         key={label}
                     >
                         {label}
