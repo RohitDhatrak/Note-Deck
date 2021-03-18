@@ -6,10 +6,10 @@ export function NoteTitle({ note, setNote }) {
 
     useEffect(() => {
         if (textAreaRef) {
-            textAreaRef.style.height = "20px";
+            textAreaRef.style.minHeight = "16px";
             textAreaRef.style.height = textAreaRef.scrollHeight + "px";
         }
-    });
+    }, [note]);
 
     function saveNoteTitle(e) {
         setNote((currentNote) => ({
