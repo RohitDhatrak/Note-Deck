@@ -3,10 +3,15 @@ const LabelContext = createContext();
 
 export function LabelProvider({ children }) {
     const [labelList, setLabelList] = useState(["None", "Important", "Todo"]);
-    const [filter, setFilter] = useState("");
+    const [selectedLabel, setSelectedLabel] = useState("");
     return (
         <LabelContext.Provider
-            value={{ labelList, setLabelList, filter, setFilter }}
+            value={{
+                labelList,
+                setLabelList,
+                selectedLabel,
+                setSelectedLabel,
+            }}
         >
             {children}
         </LabelContext.Provider>
