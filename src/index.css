@@ -31,4 +31,5 @@
 
 .main-container {
     margin-left: 23.125em;
+    min-height: 96vh;
 }
