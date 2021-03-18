@@ -1,7 +1,7 @@
 import React from "react";
 import NoteTitle from "../Helpers/NoteTitle";
 import NoteBody from "../Helpers/NoteBody";
-import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
+import NoteFooter from "../Helpers/NoteFooter";
 import { useNotes } from "../../ContextProviders/NotesContext";
 
 function NewNote() {

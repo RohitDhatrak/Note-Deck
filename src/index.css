@@ -3,11 +3,11 @@
 @import url("./components/NewNote/NewNote.css");
 @import url("./components/Helpers/NoteBody.css");
 @import url("./components/Helpers/NoteTitle.css");
-@import url("./components/Helpers/NoteFooter/NoteFooter.css");
+@import url("./components/Helpers/NoteFooter.css");
 @import url("./components/DisplayNotes/NoteCard.css");
 @import url("./components/EditNote/EditNote.css");
-@import url("./components/Helpers/NoteFooter/ColourPicker.css");
-@import url("./components/Helpers/NoteFooter/LabelSelector.css");
+@import url("./components/Helpers/NoteFooterHelpers/ColourPicker.css");
+@import url("./components/Helpers/NoteFooterHelpers/LabelSelector.css");
 @import url("./components/SidePannel/EditLabel.css");
 @import url("./components/SidePannel/SidePannel.css");
 

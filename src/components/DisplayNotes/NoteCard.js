@@ -1,5 +1,5 @@
 import React from "react";
-import NoteFooter from "../Helpers/NoteFooter/NoteFooter";
+import NoteFooter from "../Helpers/NoteFooter";
 import { UnpinSvg, PinSvg } from "../Helpers/Svg";
 import { useNotes } from "../../ContextProviders/NotesContext";
 

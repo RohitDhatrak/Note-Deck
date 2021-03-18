@@ -1,10 +1,10 @@
 import React from "react";
 import { v4 } from "uuid";
-import ColourPicker from "./ColourPicker";
-import LabelSelector from "./LabelSelector";
-import { DeleteSvg } from "../Svg";
-import colours from "../Colours";
-import { useNotes } from "../../../ContextProviders/NotesContext";
+import ColourPicker from "./NoteFooterHelpers/ColourPicker";
+import LabelSelector from "./NoteFooterHelpers/LabelSelector";
+import { DeleteSvg } from "./Svg";
+import colours from "./Colours";
+import { useNotes } from "../../ContextProviders/NotesContext";
 
 function NoteFooter({ note, setNote }) {
     const {
