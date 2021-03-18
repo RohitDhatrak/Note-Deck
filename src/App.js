@@ -5,7 +5,7 @@ import { DisplayNotes } from "./components/DisplayNotes/DisplayNotes";
 import { EditNote } from "./components/EditNote/EditNote";
 import { useNotes } from "./ContextProviders/NotesContext";
 
-function App() {
+export function App() {
     const { addNote, newNoteFlag } = useNotes();
     function saveOnOutOfFocus() {
         if (newNoteFlag) {
@@ -24,5 +24,3 @@ function App() {
         </div>
     );
 }
-
-export default App;
