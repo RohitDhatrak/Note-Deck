@@ -1,4 +1,4 @@
-function UnpinSvg() {
+export function UnpinSvg() {
     return (
         <svg
             width="1em"
@@ -17,7 +17,7 @@ function UnpinSvg() {
     );
 }
 
-function PinSvg() {
+export function PinSvg() {
     return (
         <svg
             width="1em"
@@ -36,7 +36,7 @@ function PinSvg() {
     );
 }
 
-function ColourPalletSvg() {
+export function ColourPalletSvg() {
     return (
         <svg
             width="1em"
@@ -56,7 +56,7 @@ function ColourPalletSvg() {
     );
 }
 
-function DeleteSvg() {
+export function DeleteSvg() {
     return (
         <svg width="1em" height="1em" viewBox="0 0 24 24" className="bin">
             <path
@@ -67,7 +67,7 @@ function DeleteSvg() {
     );
 }
 
-function CheckSvg() {
+export function CheckSvg() {
     return (
         <svg
             width="1em"
@@ -83,7 +83,7 @@ function CheckSvg() {
     );
 }
 
-function LabelSvg() {
+export function LabelSvg() {
     return (
         <svg width="1em" height="1em" viewBox="0 0 24 24" className="tag-icons">
             <path
@@ -94,7 +94,7 @@ function LabelSvg() {
     );
 }
 
-function HomeSvg() {
+export function HomeSvg() {
     return (
         <svg
             width="1em"
@@ -110,7 +110,7 @@ function HomeSvg() {
     );
 }
 
-function EditSvg() {
+export function EditSvg() {
     return (
         <svg
             width="1em"
@@ -126,13 +126,13 @@ function EditSvg() {
     );
 }
 
-export {
-    UnpinSvg,
-    PinSvg,
-    ColourPalletSvg,
-    DeleteSvg,
-    CheckSvg,
-    LabelSvg,
-    HomeSvg,
-    EditSvg,
-};
+export function MenuSvg() {
+    return (
+        <svg width="1em" height="1em" viewBox="0 0 24 24">
+            <path
+                d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"
+                fill="currentColor"
+            ></path>
+        </svg>
+    );
+}
