@@ -1,7 +1,7 @@
 import React from "react";
 import { useLabel } from "../../../ContextProviders/LabelContext";
 
-function LabelSelector({ note, changeProperty }) {
+export function LabelSelector({ note, changeProperty }) {
     const { labelList } = useLabel();
     function selectLabel({ e, label }) {
         if (label === "None") {
@@ -36,5 +36,3 @@ function LabelSelector({ note, changeProperty }) {
         </div>
     );
 }
-
-export default LabelSelector;

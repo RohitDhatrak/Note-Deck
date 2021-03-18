@@ -1,9 +1,9 @@
 import React from "react";
-import NoteFooter from "../Helpers/NoteFooter";
+import { NoteFooter } from "../Helpers/NoteFooter";
 import { UnpinSvg, PinSvg } from "../Helpers/Svg";
 import { useNotes } from "../../ContextProviders/NotesContext";
 
-function NoteCard({ noteId }) {
+export function NoteCard({ noteId }) {
     const { notesList, setNotesList, setEditNote, setEditModal } = useNotes();
     const note = notesList[noteId];
 
@@ -62,5 +62,3 @@ function NoteCard({ noteId }) {
         </div>
     );
 }
-
-export default NoteCard;

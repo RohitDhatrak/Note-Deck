@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { LabelSvg, HomeSvg, EditSvg } from "../Helpers/Svg";
-import EditLabel from "./EditLabel";
+import { EditLabel } from "./EditLabel";
 import { useLabel } from "../../ContextProviders/LabelContext";
 
-function SidePannel() {
+export function SidePannel() {
     const {
         labelList,
         setLabelList,
@@ -71,5 +71,3 @@ function SidePannel() {
         </div>
     );
 }
-
-export default SidePannel;

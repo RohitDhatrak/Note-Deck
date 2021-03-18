@@ -1,8 +1,8 @@
 import "./index.css";
-import NewNote from "./components/NewNote/NewNote";
-import SidePannel from "./components/SidePannel/SidePannel";
-import DisplayNotes from "./components/DisplayNotes/DisplayNotes";
-import EditNote from "./components/EditNote/EditNote";
+import { NewNote } from "./components/NewNote/NewNote";
+import { SidePannel } from "./components/SidePannel/SidePannel";
+import { DisplayNotes } from "./components/DisplayNotes/DisplayNotes";
+import { EditNote } from "./components/EditNote/EditNote";
 import { useNotes } from "./ContextProviders/NotesContext";
 
 function App() {

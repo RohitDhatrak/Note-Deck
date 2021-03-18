@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { UnpinSvg, PinSvg } from "../Helpers/Svg";
 
-function NoteTitle({ note, setNote }) {
+export function NoteTitle({ note, setNote }) {
     let textAreaRef = useRef(null);
 
     useEffect(() => {
@@ -49,5 +49,3 @@ function NoteTitle({ note, setNote }) {
         </div>
     );
 }
-
-export default NoteTitle;

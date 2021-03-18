@@ -1,4 +1,4 @@
-const colours = {
+export const colours = {
     Default: "rgb(32, 33, 36)",
     Red: "rgb(134, 47, 39, 0.5)",
     Orange: "rgb(172, 120, 25, 0.5)",
@@ -11,5 +11,3 @@ const colours = {
     Brown: "rgb(110, 55, 17, 0.5)",
     Grey: "rgb(98, 99, 99, 0.5)",
 };
-
-export default colours;

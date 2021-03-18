@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-function NoteBody({ note, setNote, setNewNoteFlag }) {
+export function NoteBody({ note, setNote, setNewNoteFlag }) {
     let textAreaRef = useRef(null);
 
     useEffect(() => {
@@ -39,5 +39,3 @@ function NoteBody({ note, setNote, setNewNoteFlag }) {
         />
     );
 }
-
-export default NoteBody;

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { v4 } from "uuid";
-import colours from "../components/Helpers/Colours";
+import { colours } from "../components/Helpers/Colours";
 const NotesContext = createContext();
 
 export function NotesProvider({ children }) {

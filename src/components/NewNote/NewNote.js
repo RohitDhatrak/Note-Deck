@@ -1,10 +1,10 @@
 import React from "react";
-import NoteTitle from "../Helpers/NoteTitle";
-import NoteBody from "../Helpers/NoteBody";
-import NoteFooter from "../Helpers/NoteFooter";
+import { NoteTitle } from "../Helpers/NoteTitle";
+import { NoteBody } from "../Helpers/NoteBody";
+import { NoteFooter } from "../Helpers/NoteFooter";
 import { useNotes } from "../../ContextProviders/NotesContext";
 
-function NewNote() {
+export function NewNote() {
     const { note, setNote, addNote, newNoteFlag, setNewNoteFlag } = useNotes();
 
     return (
@@ -35,5 +35,3 @@ function NewNote() {
         </div>
     );
 }
-
-export default NewNote;

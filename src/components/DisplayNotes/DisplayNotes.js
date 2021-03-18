@@ -1,9 +1,9 @@
 import React from "react";
-import NoteCard from "./NoteCard";
+import { NoteCard } from "./NoteCard";
 import { useNotes } from "../../ContextProviders/NotesContext";
 import { useLabel } from "../../ContextProviders/LabelContext";
 
-function DisplayNotes() {
+export function DisplayNotes() {
     const { selectedLabel } = useLabel();
     const { notesList } = useNotes();
 
@@ -64,5 +64,3 @@ function DisplayNotes() {
         </div>
     );
 }
-
-export default DisplayNotes;

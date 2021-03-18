@@ -1,8 +1,8 @@
 import React from "react";
 import { ColourPalletSvg } from "../Svg";
-import colours from "../Colours";
+import { colours } from "../Colours";
 
-function ColourPicker({ changeProperty }) {
+export function ColourPicker({ changeProperty }) {
     function changeColour(e) {
         changeProperty({
             value: e.target.style.backgroundColor,
@@ -28,5 +28,3 @@ function ColourPicker({ changeProperty }) {
         </div>
     );
 }
-
-export default ColourPicker;

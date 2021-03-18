@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckSvg } from "../Helpers/Svg";
 
-function EditLabel({ label, setLabel, addNewLabel }) {
+export function EditLabel({ label, setLabel, addNewLabel }) {
     return (
         <div onClick={(e) => e.stopPropagation()} className="edit-label-card">
             <div className="edit-label-title">Add Label</div>
@@ -19,5 +19,3 @@ function EditLabel({ label, setLabel, addNewLabel }) {
         </div>
     );
 }
-
-export default EditLabel;
