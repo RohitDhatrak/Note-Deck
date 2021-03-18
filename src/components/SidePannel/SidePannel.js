@@ -4,8 +4,12 @@ import EditLabel from "./EditLabel";
 import { useLabel } from "../../ContextProviders/LabelContext";
 
 function SidePannel() {
-    const { labelList, setLabelList, filter, setFilter } = useLabel();
-    const [selected, setSelected] = useState("Notes");
+    const {
+        labelList,
+        setLabelList,
+        selectedLabel,
+        setSelectedLabel,
+    } = useLabel();
     const [editLabelModal, setEditLabelModal] = useState(false);
     const [label, setLabel] = useState("");
 
@@ -14,12 +18,9 @@ function SidePannel() {
             label === "None" ? null : (
                 <div
                     className={`label ${
-                        label === filter ? "label-active" : null
+                        label === selectedLabel ? "label-active" : null
                     }`}
-                    onClick={(e) => {
-                        setFilter(label);
-                        setSelected(e.target.innerText);
-                    }}
+                    onClick={() => setSelectedLabel(label)}
                 >
                     <LabelSvg />
                     {label}
@@ -30,7 +31,7 @@ function SidePannel() {
 
     function addNewLabel() {
         if (label !== "") {
-            setLabelList([...labelList, label]);
+            setLabelList((currentLabels) => [...currentLabels, label]);
             setLabel("");
         }
         setEditLabelModal(false);
@@ -52,12 +53,9 @@ function SidePannel() {
             ) : null}
 
             <div
-                onClick={(e) => {
-                    setFilter("");
-                    setSelected(e.target.innerText);
-                }}
+                onClick={() => setSelectedLabel(label)}
                 className={`label home-label ${
-                    selected === "Notes" ? "label-active" : null
+                    selectedLabel === "" ? "label-active" : null
                 }`}
             >
                 <HomeSvg />
