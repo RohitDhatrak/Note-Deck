@@ -1,0 +1,30 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 4em;
+    border-bottom: rgb(232, 234, 237, 0.3) solid 1px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon {
+    margin: 0 1.9em;
+    margin-top: 0.5em;
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.logo {
+    width: 2.1em;
+    margin-right: 0.5em;
+}
+
+.home-heading {
+    display: flex;
+    align-items: center;
+}
+
+.label-heading {
+    font-size: 1.4rem;
+}
